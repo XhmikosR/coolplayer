@@ -56,8 +56,6 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>

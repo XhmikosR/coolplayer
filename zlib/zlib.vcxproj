@@ -81,8 +81,6 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>

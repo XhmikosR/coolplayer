@@ -67,10 +67,6 @@
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <OmitFramePointers>true</OmitFramePointers>
       <AdditionalIncludeDirectories>../mad;../ogg;../vorbis;../zlib;../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
