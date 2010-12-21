@@ -309,7 +309,7 @@ LRESULT CALLBACK exp_InterfaceWindowProc(HWND hWnd, UINT uiMessage, WPARAM wPara
 		HMODULE hModApplication;
 		pState = (CPs_InterfaceWindowState*)((CREATESTRUCT*)lParam)->lpCreateParams;
 		pState->m_hWnd = hWnd;
-		SetWindowLong(hWnd, GWL_USERDATA, (LONG)pState);
+		SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pState);
 		
 		// Setup icons
 		hModApplication = GetModuleHandle(NULL);
@@ -318,7 +318,7 @@ LRESULT CALLBACK exp_InterfaceWindowProc(HWND hWnd, UINT uiMessage, WPARAM wPara
 	}
 	
 	else
-		pState = (CPs_InterfaceWindowState*)GetWindowLong(hWnd, GWL_USERDATA);
+		pState = (CPs_InterfaceWindowState*)GetWindowLong(hWnd, GWLP_USERDATA);
 		
 	// We get some messages before the window gets it's WM_NCCREATE!!! (just how bad is Windows eh???)
 	if (!pState)

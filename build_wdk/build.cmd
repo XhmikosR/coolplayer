@@ -139,26 +139,26 @@ IF /I "%ARCH%" == "x64" GOTO :x64
 IF /I "%ARCH%" == "all" GOTO :x64
 
 :x64
-rem SET "LIB=%WDKBASEDIR%\lib\crt\amd64;%WDKBASEDIR%\lib\win7\amd64"
-rem SET "PATH=%WDKBASEDIR%\bin\x86;%WDKBASEDIR%\bin\x86\amd64;%SDKDIR%\Bin"
+SET "LIB=%WDKBASEDIR%\lib\crt\amd64;%WDKBASEDIR%\lib\win7\amd64"
+SET "PATH=%WDKBASEDIR%\bin\x86;%WDKBASEDIR%\bin\x86\amd64;%SDKDIR%\Bin"
 
-rem IF /I "%ARCH%" == "x86" GOTO :END
+IF /I "%ARCH%" == "x86" GOTO :END
 
-rem TITLE Building CoolPlayer x64...
-rem ECHO. && ECHO.
+TITLE Building CoolPlayer x64...
+ECHO. && ECHO.
 
-rem IF /I "%BUILDTYPE%" == "Build" (
-rem CALL :SUBNMAKE "x64=1"
-rem GOTO :END
-rem )
+IF /I "%BUILDTYPE%" == "Build" (
+CALL :SUBNMAKE "x64=1"
+GOTO :END
+)
 
-rem IF /I "%BUILDTYPE%" == "Rebuild" (
-rem CALL :SUBNMAKE "x64=1" clean
-rem CALL :SUBNMAKE "x64=1"
-rem GOTO :END
-rem )
+IF /I "%BUILDTYPE%" == "Rebuild" (
+CALL :SUBNMAKE "x64=1" clean
+CALL :SUBNMAKE "x64=1"
+GOTO :END
+)
 
-rem IF /I "%BUILDTYPE%" == "Clean" CALL :SUBNMAKE "x64=1" clean
+IF /I "%BUILDTYPE%" == "Clean" CALL :SUBNMAKE "x64=1" clean
 
 
 :END
