@@ -1,0 +1,68 @@
+- CoolPlayer - 
+___________________________________________________
+
+Credits:
+
+Niek Albers <nieka@daansystems.com>
+
+ - Projectmanager
+ - Original programming
+ - DirectSound Plugout
+
+Marcus Platts <plattsm@dreamrender.com>
+
+ - Projectmanager
+ - Player engine rewrite
+ - Input/Output module engine
+ - Cooler Wave Mapper
+
+Rob Leslie <rob@mars.org>
+ 
+ - MAD MPEG audio decoder
+
+Joel Klinghed <the_jk@yahoo.com>
+
+ - Ogg Vorbis input module
+
+Dmitry Vassiliev <slydiman@mailru.com>
+ 
+ - 8 band equalizer
+
+Andrew Paterson <ajpaterson@ecologyfund.net>
+
+ - Changes for build 216
+
+Erukian & Infinil
+
+ - Website design
+
+Rutger-Jan Hoogerdijk <rutger@cistron.nl>  
+ 
+ - Default skin design
+
+Eric "Rix" Allard
+ 
+ - Some changes
+
+Richard Hopkins	<tinyapps.co.uk>
+
+- Some changes
+
+___________________________________________________
+
+Thanks to all who helped!
+___________________________________________________
+
+Visit CoolPlayer's website at:
+http://www.daansystems.com
+___________________________________________________
+
+Legal stuff:
+
+CoolPlayer is released under the 
+GNU General Public License (GPL).
+___________________________________________________
+
+©2000-2004 DaanSystems
+Comments/bugs: nieka@daansystems.com
+___________________________________________________

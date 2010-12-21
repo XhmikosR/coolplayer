@@ -1,0 +1,46 @@
+Key		Action
+-------------------------------------------
+
+Options/toggles (Player+Playlist)
+---------------
+R		Repeat
+S 		Shuffle
+P/CTRL+F4	Playlist
+E/Q		Equalizer
+
+Playback controls (Kp=Keypad) (Player+Playlist)
+-----------------
+X/Enter/Kp5	Play/Restart/Unpause
+V/Kp.		Stop
+C/Kp0/Pause	Pause
+B/Kp6/CTRL-Right	Next Track
+Z/Kp4/CTRL-Left	Previous Track
+Left     		Skip backwards
+Right		Skip forwards
+Up/Kp8/Kp+  	Volume Up (Up is navigation on playlist)
+Down/Kp2/Kp-	Volume Down (Down is navigation on playlist)
+1/2/3...9		Set volume (10%, 20%, 30% etc)
+0/M/TAB		Set volume to 0
+
+Misc (Player+Playlist)
+----
+L/O		Open/Play File
+A		Add files to playlist
+D		Add directory to playlist
+H		Shuffle
+F1		About
+SHIFT+F11	Reload Skin
+SHIFT+F12	Skinmaker-mode
+ALT+F4/ESC	Exit (Not playlist)
+
+Playlist
+--------
+F		Find
+V		Save playlist
+DELETE		Remove selected items
+CTRL-DELETE	Empty list
+SHIFT+DELETE	Remove and delete the playing file
+ALT-UP		Move selection up one
+ALT-DOWN	Move selection up one
+ALT-Kp-		Minimise playlist window
+ALT-Kp+		Minimise playlist window
