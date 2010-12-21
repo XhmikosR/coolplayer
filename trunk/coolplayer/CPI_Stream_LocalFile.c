@@ -42,8 +42,8 @@ typedef struct _CPs_InStream_File
 
 
 void CPSLOCAL_Uninitialise(CPs_InStream* pStream);
-BOOL CPSLOCAL_Read(CPs_InStream* pStream, void* pDestBuffer, const unsigned int iBytesToRead, unsigned int* piBytesRead);
-void CPSLOCAL_Seek(CPs_InStream* pStream, const unsigned int iNewOffset);
+BOOL CPSLOCAL_Read(CPs_InStream* pStream, void* pDestBuffer, const size_t iBytesToRead, size_t* piBytesRead);
+void CPSLOCAL_Seek(CPs_InStream* pStream, const size_t iNewOffset);
 unsigned int CPSLOCAL_GetLength(CPs_InStream* pStream);
 BOOL CPSLOCAL_IsSeekable(CPs_InStream* pStream);
 unsigned int CPSLOCAL_Tell(CPs_InStream* pStream);
@@ -99,7 +99,7 @@ void CPSLOCAL_Uninitialise(CPs_InStream* pStream)
 //
 //
 //
-BOOL CPSLOCAL_Read(CPs_InStream* pStream, void* pDestBuffer, const unsigned int iBytesToRead, unsigned int* piBytesRead)
+BOOL CPSLOCAL_Read(CPs_InStream* pStream, void* pDestBuffer, const size_t iBytesToRead, size_t* piBytesRead)
 {
 	DWORD bytes;
 	BOOL reply;
@@ -107,20 +107,20 @@ BOOL CPSLOCAL_Read(CPs_InStream* pStream, void* pDestBuffer, const unsigned int 
 	CPs_InStream_File* pContext = (CPs_InStream_File*)pStream->m_pModuleCookie;
 	CP_CHECKOBJECT(pContext);
 	
-	reply = ReadFile(pContext->m_hFile, pDestBuffer, iBytesToRead, &bytes, 0);
-	*piBytesRead = (unsigned int) bytes;
+	reply = ReadFile(pContext->m_hFile, pDestBuffer, (DWORD)iBytesToRead, &bytes, 0);
+	*piBytesRead = bytes;
 	return reply;
 }
 
 //
 //
 //
-void CPSLOCAL_Seek(CPs_InStream* pStream, const unsigned int iNewOffset)
+void CPSLOCAL_Seek(CPs_InStream* pStream, const size_t iNewOffset)
 {
 	CPs_InStream_File* pContext = (CPs_InStream_File*)pStream->m_pModuleCookie;
 	CP_CHECKOBJECT(pContext);
 	
-	SetFilePointer(pContext->m_hFile, iNewOffset, 0, FILE_BEGIN);
+	SetFilePointer(pContext->m_hFile, (LONG)iNewOffset, 0, FILE_BEGIN);
 }
 
 //

@@ -117,7 +117,7 @@ typedef struct _CIs_ListViewData
 	
 	// State
 	CIe_WindowMode m_enWindowMode;
-	unsigned int m_uiAutorepeatTimer;
+	UINT_PTR m_uiAutorepeatTimer;
 	BOOL m_bAutoRepeatFirst;
 	BOOL m_bMouseOverScrollbutton;
 	int m_iActiveHeaderCol;

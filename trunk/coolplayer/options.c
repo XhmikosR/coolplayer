@@ -23,7 +23,7 @@
 #include "CPI_Playlist.h"
 
 
-LRESULT CALLBACK
+INT_PTR CALLBACK
 url_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -66,7 +66,7 @@ url_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 //
 //
 //
-LRESULT CALLBACK
+INT_PTR CALLBACK
 options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 
@@ -264,49 +264,49 @@ options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 					BOOL bSkinChosen;
 					
 					options.auto_exit_after_playing =
-						SendDlgItemMessage(hwndDlg, IDC_AUTOEXIT, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_AUTOEXIT, BM_GETCHECK,
 										   0, 0);
 					options.remember_playlist =
-						SendDlgItemMessage(hwndDlg, IDC_REMEMBERPLS,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_REMEMBERPLS,
 										   BM_GETCHECK, 0, 0);
 					options.show_remaining_time =
-						SendDlgItemMessage(hwndDlg, IDC_REMAINING, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_REMAINING, BM_GETCHECK,
 										   0, 0);
 					options.read_id3_tag =
-						SendDlgItemMessage(hwndDlg, IDC_READTAG, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_READTAG, BM_GETCHECK,
 										   0, 0);
 					options.support_id3v2 =
-						SendDlgItemMessage(hwndDlg, IDC_SUPPORTID3_V2, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_SUPPORTID3_V2, BM_GETCHECK,
 										   0, 0);
 					options.prefer_native_ogg_tags =
-						SendDlgItemMessage(hwndDlg, IDC_PREFERNATIVEOGGTAGS, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_PREFERNATIVEOGGTAGS, BM_GETCHECK,
 										   0, 0);
 					options.read_id3_tag_in_background =
-						SendDlgItemMessage(hwndDlg, IDC_READID3INBACKGROUND, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_READID3INBACKGROUND, BM_GETCHECK,
 										   0, 0);
 					options.work_out_track_lengths =
-						SendDlgItemMessage(hwndDlg, IDC_READTRACKTIME, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_READTRACKTIME, BM_GETCHECK,
 										   0, 0);
 					options.easy_move =
-						SendDlgItemMessage(hwndDlg, IDC_EASYMOVE, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_EASYMOVE, BM_GETCHECK,
 										   0, 0);
 					options.rotate_systray_icon =
-						SendDlgItemMessage(hwndDlg, IDC_ROTATE, BM_GETCHECK, 0,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_ROTATE, BM_GETCHECK, 0,
 										   0);
 					options.allow_file_once_in_playlist =
-						SendDlgItemMessage(hwndDlg, IDC_FILEONCE, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_FILEONCE, BM_GETCHECK,
 										   0, 0);
 					options.allow_multiple_instances =
-						SendDlgItemMessage(hwndDlg, IDC_MULTIPLEINSTANCES, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_MULTIPLEINSTANCES, BM_GETCHECK,
 										   0, 0);
 					options.read_id3_tag_of_selected =
-						SendDlgItemMessage(hwndDlg, IDC_READSELTAG,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_READSELTAG,
 										   BM_GETCHECK, 0, 0);
 					options.auto_play_when_started =
-						SendDlgItemMessage(hwndDlg, IDC_AUTOPLAY, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_AUTOPLAY, BM_GETCHECK,
 										   0, 0);
 					options.show_on_taskbar =
-						SendDlgItemMessage(hwndDlg, IDC_TASKBAR, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_TASKBAR, BM_GETCHECK,
 										   0, 0);
 					                       
 					if (options.show_on_taskbar)
@@ -336,7 +336,7 @@ options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 					
 					options.remember_last_played_track =
 					
-						SendDlgItemMessage(hwndDlg, IDC_REMSONG, BM_GETCHECK,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_REMSONG, BM_GETCHECK,
 										   0, 0);
 					                       
 					options.remember_skin_count =
@@ -345,10 +345,10 @@ options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 						GetDlgItemInt(hwndDlg, IDC_DELAYTIME, NULL, FALSE);
 					    
 					options.scroll_track_title =
-						SendDlgItemMessage(hwndDlg, IDC_SCROLLTITLE,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_SCROLLTITLE,
 										   BM_GETCHECK, 0, 0);
 					options.always_on_top =
-						SendDlgItemMessage(hwndDlg, IDC_ONTOP, BM_GETCHECK, 0,
+						(BOOL)SendDlgItemMessage(hwndDlg, IDC_ONTOP, BM_GETCHECK, 0,
 										   0);
 					window_set_always_on_top(hWnd, options.always_on_top);
 					
@@ -356,7 +356,7 @@ options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 								   options.main_skin_file, MAX_PATH);
 					               
 					               
-					bSkinChosen = SendDlgItemMessage(hwndDlg, IDC_PLAYERSKINCHECK, BM_GETCHECK, 0, 0);
+					bSkinChosen = (BOOL)SendDlgItemMessage(hwndDlg, IDC_PLAYERSKINCHECK, BM_GETCHECK, 0, 0);
 					
 					if (bSkinChosen != !options.use_default_skin
 							|| globals.m_bOptions_ChangedSkin == TRUE)
@@ -368,7 +368,7 @@ options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 						main_play_control(ID_LOADSKIN, hWnd);
 					}
 					
-					index = SendDlgItemMessage(hwndDlg, IDC_OUTPUT, CB_GETCURSEL, 0, 0);
+					index = (int)SendDlgItemMessage(hwndDlg, IDC_OUTPUT, CB_GETCURSEL, 0, 0);
 					
 					if (options.decoder_output_mode != index)
 					{
@@ -381,7 +381,7 @@ options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 						int iMixerSelection;
 						CPe_MixerMode enNewMixerMode;
 						
-						iMixerSelection = SendDlgItemMessage(hwndDlg, IDC_MIXER, CB_GETCURSEL, 0, 0);
+						iMixerSelection = (int)SendDlgItemMessage(hwndDlg, IDC_MIXER, CB_GETCURSEL, 0, 0);
 						
 						if (iMixerSelection == 0)
 							enNewMixerMode = mmMasterVolume;

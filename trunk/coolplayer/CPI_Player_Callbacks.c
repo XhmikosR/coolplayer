@@ -213,7 +213,7 @@ void CPI_Player_cb_OnEnumOutputDevice(CP_HPLAYER hPlayer, const char* pcDeviceNa
 	int iNewDeviceIDX;
 	
 	// Add this device to the configure dialog
-	iNewDeviceIDX = SendDlgItemMessage(windows.dlg_options, IDC_OUTPUT, CB_ADDSTRING, 0, (LPARAM)pcDeviceName);
+	iNewDeviceIDX = (int)SendDlgItemMessage(windows.dlg_options, IDC_OUTPUT, CB_ADDSTRING, 0, (LPARAM)pcDeviceName);
 	SendDlgItemMessage(windows.dlg_options, IDC_OUTPUT, CB_SETITEMDATA, iNewDeviceIDX - 1, MAKELPARAM(iDeviceID, iDeviceID));
 	
 	// Ensure that the correct item is selected

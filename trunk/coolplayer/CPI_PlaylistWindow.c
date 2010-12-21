@@ -801,7 +801,7 @@ void CPlaylistWindow_CreateIPEdit(const int iItem, const int iSubItem)
 		
 		for (iGenreIDX = 0; iGenreIDX < CIC_NUMGENRES; iGenreIDX++)
 		{
-			int iNewItemIDX = SendMessage(windows.wnd_playlist_IPEdit,
+			int iNewItemIDX = (int)SendMessage(windows.wnd_playlist_IPEdit,
 										  CB_ADDSTRING,
 										  0L,
 										  (LPARAM)glb_pcGenres[iGenreIDX]);
@@ -1073,7 +1073,7 @@ void CPlaylistWindow_WM_COMMAND_IDC_PL_FLOATINGEDIT(WPARAM wParam, LPARAM lParam
 		DWORD dwTextLen;
 		
 		// Get the text from the control
-		dwTextLen = SendMessage(windows.wnd_playlist_IPEdit, WM_GETTEXTLENGTH, 0L, 0L) + 1;
+		dwTextLen = (DWORD)SendMessage(windows.wnd_playlist_IPEdit, WM_GETTEXTLENGTH, 0L, 0L) + 1;
 		pcEditText = (char*)malloc(dwTextLen * sizeof(char));
 		SendMessage(windows.wnd_playlist_IPEdit, WM_GETTEXT, (WPARAM)dwTextLen, (LPARAM)pcEditText);
 		
@@ -1134,7 +1134,7 @@ void CPlaylistWindow_WM_COMMAND_IDC_PL_FLOATINGCOMBO(WPARAM wParam, LPARAM lPara
 		int iSelectedItemIDX;
 		unsigned char cNewGenre;
 		
-		iSelectedItemIDX = SendMessage(windows.wnd_playlist_IPEdit, CB_GETCURSEL, 0L, 0L);
+		iSelectedItemIDX = (int)SendMessage(windows.wnd_playlist_IPEdit, CB_GETCURSEL, 0L, 0L);
 		cNewGenre = (unsigned char)SendMessage(windows.wnd_playlist_IPEdit, CB_GETITEMDATA, (WPARAM)iSelectedItemIDX, 0L);
 		
 		// Update all of the selected items

@@ -37,7 +37,7 @@ typedef struct _CPs_CircleBuffer* CP_HCIRCLEBUFFER;
 typedef void (*pfn_CircleBufferUninitialise)(CP_HCIRCLEBUFFER bBuffer);
 //
 typedef void (*pfn_CircleBufferWrite)(CP_HCIRCLEBUFFER bBuffer, const void* pSourceBuffer, const unsigned int iNumBytes);
-typedef BOOL (*pfn_CircleBufferRead)(CP_HCIRCLEBUFFER bBuffer, void* pDestBuffer, const unsigned int iBytesToRead, unsigned int* pbBytesRead);
+typedef BOOL (*pfn_CircleBufferRead)(CP_HCIRCLEBUFFER bBuffer, void* pDestBuffer, const size_t iBytesToRead, size_t* pbBytesRead);
 typedef unsigned int (*pfn_CircleGetUsedSpace)(CP_HCIRCLEBUFFER bBuffer);
 typedef unsigned int (*pfn_CircleGetFreeSpace)(CP_HCIRCLEBUFFER bBuffer);
 typedef void (*pfn_CircleFlush)(CP_HCIRCLEBUFFER bBuffer);

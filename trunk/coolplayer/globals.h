@@ -321,14 +321,14 @@ int  window_bmp_transparent_blt(HWND hWnd, HBITMAP SrcBmp, int srcx, int srcy, i
 int    *cmdline_get_argument(char *arg, HWND hWnd);
 LRESULT CALLBACK main_windowproc(HWND hWnd, UINT message, WPARAM wParam,
 								 LPARAM lParam);
-LRESULT CALLBACK options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
+INT_PTR CALLBACK options_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
 									LPARAM lParam);
-LRESULT CALLBACK url_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
+INT_PTR CALLBACK url_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
 								LPARAM lParam);
-LRESULT CALLBACK about_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
+INT_PTR CALLBACK about_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
 								  LPARAM lParam);
-LRESULT CALLBACK playlist_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
-									 LPARAM lParam);
+//LRESULT CALLBACK playlist_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam,
+//									 LPARAM lParam);
 void    cmdline_usage(HWND);
 void    main_update_title_text();
 void    main_draw_bitrate(HWND hWnd);
