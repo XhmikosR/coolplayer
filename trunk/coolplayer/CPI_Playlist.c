@@ -406,9 +406,9 @@ void CPL_AddSingleFile(CP_HPLAYLIST hPlaylist, const char* pcPath, const char* p
 		// it might get here if a stream is of the form http://ipaddr:port with no
 		// file name such as http://ipaddr:port/filename.ogg
 		
-		if (strnicmp(CIC_HTTPHEADER, pcPath, 5) == 0
-				|| strnicmp("https:", pcPath, 6) == 0
-				|| strnicmp("ftp:", pcPath, 4) == 0)
+		if (_strnicmp(CIC_HTTPHEADER, pcPath, 5) == 0
+				|| _strnicmp("https:", pcPath, 6) == 0
+				|| _strnicmp("ftp:", pcPath, 4) == 0)
 			valid = TRUE;
 			
 		if (valid == FALSE)
