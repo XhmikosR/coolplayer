@@ -23,7 +23,7 @@
 #include "stdafx.h"
 #include "globals.h"
 #include "CompositeFile.h"
-#include "ZLib/zlib.h"
+#include "zlib/zlib.h"
 
 
 #define CPC_PKFILE_MAGIC  0x04034B50
