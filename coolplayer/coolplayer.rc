@@ -1,6 +1,7 @@
 // Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
+#include "globals.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -238,8 +239,8 @@ IDR_DEFAULTSKIN         SKIN                    "res\\Default.CPSkin"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,1,0,0
- PRODUCTVERSION 1,1,0,0
+ FILEVERSION CP_VERSION_MAJOR,CP_VERSION_MINOR,CP_VERSION_BUILD,CP_BUILD_NUMBER
+ PRODUCTVERSION CP_VERSION_MAJOR,CP_VERSION_MINOR,CP_VERSION_BUILD,CP_BUILD_NUMBER
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -255,12 +256,12 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "FileDescription", "CoolPlayer"
-            VALUE "FileVersion", "1.1.0.0"
+            VALUE "FileVersion", STRINGIFY(CP_VERSION_MAJOR) ", " STRINGIFY(CP_VERSION_MINOR) ", " STRINGIFY(CP_VERSION_BUILD) ", " STRINGIFY(CP_BUILD_NUMBER)
             VALUE "InternalName", "coolplayer.exe"
-            //VALUE "LegalCopyright", "Copyright (C) 2010"
+            VALUE "LegalCopyright", "Copyright (C) 2000-2006 Niek Albers"
             VALUE "OriginalFilename", "coolplayer.exe"
             VALUE "ProductName", "CoolPlayer"
-            VALUE "ProductVersion", "1.1.0.0"
+            VALUE "ProductVersion", STRINGIFY(CP_VERSION_MAJOR) ", " STRINGIFY(CP_VERSION_MINOR) ", " STRINGIFY(CP_VERSION_BUILD) ", " STRINGIFY(CP_BUILD_NUMBER)
         END
     END
     BLOCK "VarFileInfo"

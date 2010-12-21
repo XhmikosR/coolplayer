@@ -50,10 +50,16 @@ typedef void* CP_HSYSICON;
 #include "CLV_ListView.h"
 #include "String.h"
 
+#define DO_STRINGIFY(x) #x
+#define STRINGIFY(x) DO_STRINGIFY(x)
+
 // menu id's and locations
 #define SKIN_SUBMENU_INDEX		5
 
 // Handle to player
+#define CP_VERSION_MAJOR				1
+#define CP_VERSION_MINOR				1
+#define CP_VERSION_BUILD				0
 #define CP_BUILD_NUMBER					220
 #define CP_COOLPLAYER					"CoolPlayer"
 #define CIC_HTTPHEADER					"http://"
