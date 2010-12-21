@@ -41,21 +41,19 @@ ZLIBSRC=..\zlib
 
 DEFINES=/D "_WINDOWS" /D "NDEBUG" /D "_CRT_SECURE_NO_WARNINGS"
 CFLAGS=/nologo /c /Fo"$(OBJDIR)/" /EHsc /MD /O1 /GS /GL /MP
-LIBS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib \
-	ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dsound.lib wininet.lib \
-	comctl32.lib winmm.lib
+LIBS=kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comdlg32.lib comctl32.lib \
+	winspool.lib ole32.lib oleaut32.lib dsound.lib wininet.lib winmm.lib
 LDFLAGS=/NOLOGO /INCREMENTAL:NO /RELEASE /OPT:REF /OPT:ICF /DYNAMICBASE /NXCOMPAT /LTCG \
 		/MERGE:.rdata=.text
-RFLAGS=
 
 !IFDEF x64
 CFLAGS=$(CFLAGS) /D "_WIN64" /D "_WIN32_WINNT=0x0502" /wd4244
-RFLAGS=$(RFLAGS) /d "_WIN64"
+RFLAGS=/d "_WIN64"
 LIBS=$(LIBS) msvcrt_win2003.obj
 LDFLAGS=$(LDFLAGS) /SUBSYSTEM:WINDOWS,5.02 /MACHINE:X64 $(LIBS)
 !ELSE
 CFLAGS=$(CFLAGS) /D "WIN32" /D "_WIN32_WINNT=0x0500"
-RFLAGS=$(RFLAGS) /d "WIN32"
+RFLAGS=/d "WIN32"
 LIBS=$(LIBS) msvcrt_win2000.obj
 LDFLAGS=$(LDFLAGS) /SUBSYSTEM:WINDOWS,5.0 /MACHINE:X86 $(LIBS)
 !ENDIF
