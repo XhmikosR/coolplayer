@@ -8,9 +8,7 @@
 /* #undef EXPERIMENTAL */
 
 /* Define to 1 if you have the <assert.h> header file. */
-#ifndef _WIN64
 #define HAVE_ASSERT_H 1
-#endif
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 /* #undef HAVE_DLFCN_H */
@@ -76,7 +74,7 @@
 /* #undef NDEBUG */
 
 /* Define to optimize for accuracy over speed. */
-/* #undef OPT_ACCURACY */
+#define OPT_ACCURACY 1
 
 /* Define to optimize for speed over accuracy. */
 /* #undef OPT_SPEED */
