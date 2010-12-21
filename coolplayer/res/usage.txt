@@ -1,0 +1,38 @@
+Usage: CoolPlayer [options] [file...]
+
+Where options can be with - or /, '-'means 'off' and '+' means 'on'. 
+The commandline options override the configuration file. 
+All non options are considered to be mpeg audio files, 
+you can mix options and files:
+
+-?,-h,-help		Show this help.
+-/+top			Always on top.
+-/+exit			Exit after playing.
+-/+ext 			Allow all extensions.
+-/+icon			Rotate systemtray icon.
+-/+scroll			Scroll Songtitle.
+-/+time			Show remaining time.
+-/+tag			Read file info (ID3 Tag).
+-/+easy			Easy move.
+-/+showplaylist		Show the playlist.
+-/+playlist		Remember playlist.
+-/+played		Remember last played.
+-/+eq			Equalizer active.
+-/+repeat		Repeat mode.
+-/+shuffle		Shuffle mode.
+-/+fileonce		Allow a file only once in the playlist.
+-/+multipleinstances	Allow multiple instances.
+-/+autoplay		Start playing when CoolPlayer starts.
+-/+taskbar		Show CoolPlayer on the taskbar.
+-exitnow			Exit a running instance of CoolPlayer
+-minimized		Run minimized.
+-mode 1..4		Mode: 1=Stereo, 2=Mono L, 3=Mono R, 4=Mono Mix.
+-priority 0..4		Priority 0=low, 4=high.
+-output 0|1		Output mode 0=file, 1=soundcard.
+-skin file			Load skin, file=default means use the default skin.
+-add			Do not clear the playlist before adding files.
+-play			Press play
+-pause			Press pause
+-stop			Press stop
+-next			Press next
+-prev			Press prev

@@ -1,0 +1,196 @@
+CoolPlayer Revision History
+===========================
+Version 220
+ + Playlist is now restored when toggling if it was previously minimized
+
+Version 219
+ + Fixed potential buffer overflow when reading OGG tags
+ + Fixed open file dialog not being modal
+ + Fixed add directory dialog not being modal
+ + Enabled XP visual style support
+ + Fixed bitrate display showing parts of previous songs bitrate
+ + WAV file bitrate is now shown
+ + Improved dialogs
+ + Keyboard shortcuts between player and playlist are now more integrated
+
+Version 218
+ + Fixed channels being swapped when toggling EQ
+ + Fixed player skin not saving properly
+
+Version 217
+ + Now loads .m3u playlists using "Open URL"
+ + Fixed using -h,-?,-help on the command line killing existing instances
+ + Fixed using -/+showplaylist on commandline messing with toggle playlist
+ + Fixed issue when seeking if coolplayer is paused
+ + "Just add files" is back
+ + Improved options dialog usability (Keyboard input and tab navigation now works and in correct order)
+ + Menus now have keyboard accelerators for easier navigation (underlined letters)
+ + Fixed length of WAV files not showing in playlist
+ + Fixed non valid files being added to playlist (such as .txt)
+
+Version 216
+ + Enhanced aoTuV vorbis support.
+ + Correct the Makefile(s) there was a minor inconsistency 
+   that meant that it would not build.
+ + Add -Wall to the compile options so that gcc issues all warnings.
+ + Modify the sources to eliminate all of the compiler warnings.
+ + Update libogg to the latest version (1.1.3).
+ + Provide additional vorbis libraries (latest version = 1.1.2 and the aoTuV r1 variant) 
+   which can be used in place of the current version when building CoolPlayer.
+ + Create Visual Studio 2005 project files and modifications.
+ + Fixed several possible buffer overflows.
+ + Compiled against new MS libraries.
+
+Version 215
+ + New Mad decoder 0.15.1
+ + Added force of close when closing hanging CoolPlayer in network streams
+ + Some minor changes
+
+Version 214
+ + Fixed loading of WinAmp plugins when not appropriate.
+ + Don't use ID3v1.1 when comment is longer than 28 characters.
+ + Fixed unnecesary tagging.
+ + Do not tag non .mp3 files.
+ + Fixed shuffle
+
+Version 213
+ - Marcus checked out... This version is a merge of his changes and several new fixes.
+ + OGG files now use OGG tags (no more ID3v2 for OGG files)
+ + OGG Internet streaming works!
+ + Fixed "Allow only once in playlist" sometimes not working
+ + Fixed calling "CLOSE" from the system menu - making the Playlist window die forever
+ + Added status area to the playlist (shows tagging progress)
+ + Fixed file-rename not working on files with illegal chars in them (like : and / and \)
+ + Changed the WinAmp plugins loaded to be the first to try
+ + All input codecs will get a chance now to play the file
+ + Fix for sudden volume changes when using internal volume
+ + Live EQ removed in Directsound Plugout. EQ changes will happen a bit slower, but no more clicking & skipping.
+ + Changed some internals
+ 
+Version 212
+ + SHIFT+DEL works again
+ + Fixed a crashbug when opening a new file with EQ on
+ + Fixed a rember playlist bug with relative paths
+ + WAV File writer is back, even for streams
+ + Fixed display of streams in playlist
+ + Fixed a bug when loading the default playlist with backgroun ID3 tag loading. Sometimes it just wouldn't load
+ + Updated ogg/vorbis to the latest CVS tree
+ + Linked statically to runtime library
+ + Fixed the commandline options help and the keyboard shortcuts
+ + Commandline options handling internally changed.
+ + Updated the about screen
+
+Version 211
+ + Fixed HTTP streaming
+ + Fixed a playlist read bug
+ + Compiled with Visual Studio.NET
+
+Version 210
+ + Can now automatically work out the track times (insead of r-clicking the time column)
+ + Fixed AV if you pressed next to go beyond the end of the playlist and then clicked prev
+ + Fixed "remember last played" not working
+ + Fixed POP at *end* of some OGGs (bug in last block read code)
+ + Fixed WAV reader getting confused by ID3v2 tags
+ + Fixed "Playlist clear" leaving one file behind if there is a background ID3 read in progress
+ + Dropped prioity of background ID3v2 reads (makes the interface respond more quickley to big file/playlist drops)
+ + Added ability to rename based on Artist, tracknum and title - right click on text in the "Path" or "Filename" column for options
+
+Version 209
+ + Fixed minimise and maximise on playlist
+ + Added support for ID3v2 (read and write)
+ + Fixed systray tooltip icon not showing artist and song title
+ + Fixed some memory bugs (would have shown up as occasional crashes during closedown)
+ + Fixed problem resizing the last column
+ + Added background load of ID3 tags (this will prevent the delays on loading huge playlists)
+ + Added track length to playlist - right hand click in the track's "Length" column to (re)calculate (these are stored in the ID3v2 tag)
+ + Fixed track stack advancing over the next song if you remove the current song from the playlist
+ + Fixed the volume setting to 100% at the start of every song (affected only a few soundcard/driver combinations)
+ + Fixed occasional POP between songs (in OGG and MP3)
+
+Version 208
+ + Fixed PLAY/PAUSE hotkey not working on some MM keyboards
+ + Added option where volume control can either influence the system MASTER volume, system WAVE volume or none of the system controls
+ + Fixed "Play from here" not working if a song was already playing
+ + Added "live" EQ for DirectSound output device
+ + Reduced noise on live EQ change
+ + Increased DirectSound buffer (to reduce skipping)
+
+Version 207
+ + Added "TrackStack" - right click in the track's "Stack" column for advanced play options
+ + Fixed Mixer selection code (for volume control) should now affect the MASTER volume for the output device
+ + Skin state no longer resets when you close the options dialog
+ + Hitting the PLAY button during pause will now unpause
+ + Added support for multimedia keyboards (also made the "PAUSE" button work on normal 102key keyboards)
+ + Added support for "live" EQ changes - but only on the Cooler Wave mapper output device
+ + Increased buffer size for the Cooler Wave mapper (will reduce skipping on slower systems)
+ + Fixed (and improved) the rotating systray icon
+ + Middle clicking on the systray icon now toggles pause state (if playing)
+
+Version 206
+ + Totally new skin system for the playlist (rewrite of the window handling code & a custom listview)
+  - faster
+  - lower memory usage
+  - skin support for the headers & scrollbars
+ + Added ability to show/hide columns (R-Click on the header)
+ + Fixed scrolling song title "jerking"
+ + Added "Path" and "Filename" to playlist columns (R-Click on header to turn columns on and off)
+ + Added "CoolPlayer Queue" and "CoolPlayer Play" to explorer folders (do a "Register Filetypes")
+ + Removed Wave out writer - (this will be back in the "CoolerConverter" at a later date)
+ + Added several new functions to the keyboard interface
+ + Added auto renumber for track numbers (multi select and r-click on the track number)
+ + Fixed bug in IP ID3 edit (where things started to slow down after a lot of changes)
+ + Fixed playlist read code now works with unix generated files
+ + Remove skip when EQ gets switched on and off (there is still a delay - that'll be fixed later)
+ + Holding CTRL down while dropping files onto the player now adds the songs to the playlist (rather than replacing the current playlist)
+
+Version 205
+ + Inplace ID3 tag editing - right hand click an item in the playlist (works with multi selects too)
+ + Fixed shotcast streams in playlist being skipped
+ + Now aborts startup if there are no output devices present in the system
+ + Improved volume mapping code (so that the correct volume control is changed by CoolPlayer)
+ + Removed bitrate display when playing WAV files
+
+Version 204
+ + Totally new playlist system (with too much changed to say here!) 
+ + Totally new "find" system
+ + New (much faster) ID3 tag reading
+ + New (much faster) M3U reading
+ + Now supports Title entry in PLS files
+ + Removed "not implemented" message from stream open
+ + Fixed problem with Win95
+ + Fixed problem where the play engine can get bogged down (with endless opens)
+ + Fixed hang in streaming if server opens connection but does not send any data
+ + Playlist column sequence is now saved in the ini file
+ + Fixed occasional lockup in DirectSound output
+ + Playlists can now handle UNC files
+
+Version 203
+ + Added support for streaming MP3 (over http)
+
+Version 202
+ + Linked player to new web site & tidied up About dialog
+ + Added support for multiple instances
+ + Improved seek performance
+ + Made EQ on/off state immediate
+ + Fixed EQ setting getting corrupted when options dialog is closed
+ + Fixed EOS bug in DirectSound output
+ + Fixed startup corruption in DirectSound
+ + Added support for WinAmp IN plugins (dump them in the same dir as CoolPlayer.exe)
+ + Now sorts files if a directory is added
+
+Version 201
+ + Sorted out DirectSound seek
+ + Fixed interface leak in DirectSound
+ + Stopped DirectSound module overallocating timers
+ + Removed need to restart CoolPlayer if Output module changes
+ + Changed build system (to make producing releases easier)
+
+Version 200
+ + Added MAD MP3 CoDec
+ + Added Cooler Play engine
+ + Added OGG Vorbis Support
+ + Added WAV support
+ + Added DirectSound support
+ + Now sorts dropped files before adding to the playlist
+ + Removed interface hang during startup
+ + Added new Graphic Equaliser
