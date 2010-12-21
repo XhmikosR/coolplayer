@@ -40,7 +40,7 @@ ZLIBSRC=..\zlib
 
 
 DEFINES=/D "_WINDOWS" /D "NDEBUG" /D "_CRT_SECURE_NO_WARNINGS"
-CFLAGS=/nologo /c /Fo"$(OBJDIR)/" /EHsc /MD /O2 /GS /GT /GL /MP
+CFLAGS=/nologo /c /Fo"$(OBJDIR)/" /EHsc /MD /O1 /GS /GL /MP
 LIBS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib \
 	ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib dsound.lib wininet.lib \
 	comctl32.lib winmm.lib
