@@ -32,9 +32,6 @@
 // #include "mmsystem.h"
 #include "CPI_Stream.h"
 #include "CPI_ID3.h"
-#ifdef _MSC_VER
-#pragma comment(lib, "winmm.lib")
-#endif
 
 # define SAMPLE_DEPTH 16
 # define scale(x, y) dither((x), (y))
