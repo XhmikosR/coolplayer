@@ -154,152 +154,154 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuildStep Include="_BldNum.h">
+    <ClInclude Include="String.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CLV_ListView.h">
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CompositeFile.h">
+    </ClInclude>
+    <ClInclude Include="skin.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CP_RIFFStructs.h">
+    </ClInclude>
+    <ClInclude Include="RotatingIcon.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CP_WinAmpStructs.h">
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_CircleBuffer.h">
+    </ClInclude>
+    <ClInclude Include="globals.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Equaliser.h">
+    </ClInclude>
+    <ClInclude Include="DLG_Find.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_ID3.h">
+    </ClInclude>
+    <ClInclude Include="debug.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Image.h">
+    </ClInclude>
+    <ClInclude Include="CPSK_Skin.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Indicators.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Verbs.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Interface.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Stream.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_InterfacePart.h">
+    </ClInclude>
+    <ClInclude Include="CPI_PlaylistWindow.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Keyboard.h">
+    </ClInclude>
+    <ClInclude Include="CPI_PlaylistItem_Internal.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Player.h">
+    </ClInclude>
+    <ClInclude Include="CPI_PlaylistItem.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Player_CoDec.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Playlist.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Player_Engine.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Player_Output.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Player_Messages.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Player_Messages.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Player_Output.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Player_Engine.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Playlist.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Player_CoDec.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_PlaylistItem.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Player.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_PlaylistItem_Internal.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Keyboard.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_PlaylistWindow.h">
+    </ClInclude>
+    <ClInclude Include="CPI_InterfacePart.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Stream.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Interface.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPI_Verbs.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Indicators.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="CPSK_Skin.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Image.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="debug.h">
+    </ClInclude>
+    <ClInclude Include="CPI_ID3.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="DLG_Find.h">
+    </ClInclude>
+    <ClInclude Include="CPI_Equaliser.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="globals.h">
+    </ClInclude>
+    <ClInclude Include="CPI_CircleBuffer.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="resource.h">
+    </ClInclude>
+    <ClInclude Include="CP_WinAmpStructs.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="RotatingIcon.h">
+    </ClInclude>
+    <ClInclude Include="CP_RIFFStructs.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="skin.h">
+    </ClInclude>
+    <ClInclude Include="CompositeFile.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="stdafx.h">
+    </ClInclude>
+    <ClInclude Include="CLV_ListView.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="String.h">
+    </ClInclude>
+    <ClInclude Include="WindowsOS.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="WindowsOS.h">
+    </ClInclude>
+    <ClInclude Include="_BldNum.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\about.txt">
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\usage.txt">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\changes.txt">
+    </None>
+    <None Include="res\readme.txt">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\coolplayer.ico">
+    </None>
+    <None Include="res\keyboard.txt">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\Default.CPSkin">
+    </None>
+    <None Include="res\changes.txt">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\keyboard.txt">
+    </None>
+    <None Include="res\about.txt">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\main_bigfont.bmp">
+    </None>
+    <None Include="res\coolplayer.ico">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\main_down.bmp">
+    </None>
+    <None Include="res\main_bigfont.bmp">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\main_smallfont.bmp">
+    </None>
+    <None Include="res\main_down.bmp">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\main_up.bmp">
+    </None>
+    <None Include="res\main_smallfont.bmp">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\mp3.ico">
+    </None>
+    <None Include="res\main_up.bmp">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\pls.ico">
+    </None>
+    <None Include="res\mp3.ico">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\readme.txt">
+    </None>
+    <None Include="res\pls.ico">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\SysIcon.bmp">
+    </None>
+    <None Include="res\SysIcon.bmp">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\SysIcon_Mask.bmp">
+    </None>
+    <None Include="res\SysIcon_Mask.bmp">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="res\usage.txt">
+    </None>
+    <None Include="res\Default.CPSkin">
       <Filter>Resource Files</Filter>
-    </CustomBuildStep>
+    </None>
   </ItemGroup>
 </Project>
