@@ -11,7 +11,7 @@
  ********************************************************************
 
  function: bitrate tracking and management
- last mod: $Id: bitrate.h,v 1.1 2007/12/16 11:48:34 wisepenguin Exp $
+ last mod: $Id: bitrate.h 13293 2007-07-24 00:09:47Z xiphmont $
 
  ********************************************************************/
 
