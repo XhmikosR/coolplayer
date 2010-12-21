@@ -2403,11 +2403,11 @@ LRESULT CALLBACK exp_ListViewWindowProc(HWND hWnd, UINT uiMessage, WPARAM wParam
 	{
 		pListData = (CIs_ListViewData*)((CREATESTRUCT*)lParam)->lpCreateParams;
 		pListData->m_hWnd = hWnd;
-		SetWindowLong(hWnd, GWL_USERDATA, (LONG)pListData);
+		SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pListData);
 	}
 	
 	else
-		pListData = (CIs_ListViewData*)GetWindowLong(hWnd, GWL_USERDATA);
+		pListData = (CIs_ListViewData*)GetWindowLong(hWnd, GWLP_USERDATA);
 		
 	CP_CHECKOBJECT(pListData);
 	
