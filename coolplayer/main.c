@@ -998,7 +998,7 @@ void    main_draw_controls_all(HWND hWnd)
 
 void    options_create(HWND hWnd)
 {
-	windows.dlg_options = DialogBox(GetModuleHandle(NULL), // handle to application instance
+	windows.dlg_options = CreateDialog(GetModuleHandle(NULL), // handle to application instance
 									MAKEINTRESOURCE(IDD_OPTIONS), // identifies dialog box template
 									hWnd, // handle to owner window
 									(DLGPROC) options_windowproc); // pointer to dialog box procedure
@@ -1170,7 +1170,7 @@ main_windowproc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			int   count = 0;
 			BOOL    wegotsome;
 			char *string = copydata->lpData;
-			int argc = copydata->dwData;
+			int argc = (int)copydata->dwData;
 			char *argv[255] = {0};
 			
 			while (count < argc)
@@ -2345,7 +2345,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 				CPSK_Uninitialise();
 				IF_ProcessDeInit();
 				
-				return (msg.wParam);
+				return (int)msg.wParam;
 			}
 		}
 	}

@@ -63,8 +63,8 @@ typedef struct _CPs_InStream_Internet
 
 
 void CPSINET_Uninitialise(CPs_InStream* pStream);
-BOOL CPSINET_Read(CPs_InStream* pStream, void* pDestBuffer, const unsigned int iBytesToRead, unsigned int* piBytesRead);
-void CPSINET_Seek(CPs_InStream* pStream, const unsigned int iNewOffset);
+BOOL CPSINET_Read(CPs_InStream* pStream, void* pDestBuffer, const size_t iBytesToRead, size_t* piBytesRead);
+void CPSINET_Seek(CPs_InStream* pStream, const size_t iNewOffset);
 UINT CPSINET_Tell(CPs_InStream* pStream);
 UINT CPSINET_GetLength(CPs_InStream* pStream);
 BOOL CPSINET_IsSeekable(CPs_InStream* pStream);
@@ -264,7 +264,7 @@ void CPSINET_Uninitialise(CPs_InStream* pStream)
 //
 //
 //
-BOOL CPSINET_Read(CPs_InStream* pStream, void* pDestBuffer, const unsigned int iBytesToRead, unsigned int* piBytesRead)
+BOOL CPSINET_Read(CPs_InStream* pStream, void* pDestBuffer, const size_t iBytesToRead, size_t* piBytesRead)
 {
 	CPs_InStream_Internet* pContext = (CPs_InStream_Internet*)pStream->m_pModuleCookie;
 	CP_CHECKOBJECT(pContext);
@@ -275,7 +275,7 @@ BOOL CPSINET_Read(CPs_InStream* pStream, void* pDestBuffer, const unsigned int i
 //
 //
 //
-void CPSINET_Seek(CPs_InStream* pStream, const unsigned int iNewOffset)
+void CPSINET_Seek(CPs_InStream* pStream, const size_t iNewOffset)
 {
 #ifdef _DEBUG
 	CPs_InStream_Internet* pContext = (CPs_InStream_Internet*)pStream->m_pModuleCookie;

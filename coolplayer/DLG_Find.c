@@ -40,7 +40,7 @@ void Search_SelectItems();
 //
 //
 //
-BOOL CALLBACK wp_FindDialog(HWND hWnd, UINT uMessage, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK wp_FindDialog(HWND hWnd, UINT uMessage, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMessage)
 	{
@@ -205,7 +205,7 @@ void Search_SelectItems()
 	BOOL bTitles, bAlbums, bArtists;
 	
 	// Get search term
-	iEditTextLength = SendDlgItemMessage(windows.m_hWndFindDialog, IDC_FND_TEXT, WM_GETTEXTLENGTH, 0L, 0L);
+	iEditTextLength = (int)SendDlgItemMessage(windows.m_hWndFindDialog, IDC_FND_TEXT, WM_GETTEXTLENGTH, 0L, 0L);
 	pcTerm = (char*)malloc(iEditTextLength + 1);
 	SendDlgItemMessage(windows.m_hWndFindDialog, IDC_FND_TEXT, WM_GETTEXT, (WPARAM)(iEditTextLength + 1), (LPARAM)pcTerm);
 	

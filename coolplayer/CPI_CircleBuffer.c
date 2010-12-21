@@ -28,7 +28,7 @@
 #define CIC_WAITTIMEOUT  3000
 void CircleBufferUninitialise(CPs_CircleBuffer* pCBuffer);
 void CircleBufferWrite(CPs_CircleBuffer* pCBuffer, const void* pSourceBuffer, const unsigned int iNumBytes);
-BOOL CircleBufferRead(CPs_CircleBuffer* pCBuffer, void* pDestBuffer, const unsigned int iBytesToRead, unsigned int* pbBytesRead);
+BOOL CircleBufferRead(CPs_CircleBuffer* pCBuffer, void* pDestBuffer, const size_t iBytesToRead, size_t* pbBytesRead);
 void CircleFlush(CPs_CircleBuffer* pCBuffer);
 unsigned int CircleGetFreeSpace(CPs_CircleBuffer* pCBuffer);
 unsigned int CircleGetUsedSpace(CPs_CircleBuffer* pCBuffer);
@@ -131,10 +131,10 @@ void CircleBufferWrite(CPs_CircleBuffer* pCBuffer, const void* _pSourceBuffer, c
 //
 //
 //
-BOOL CircleBufferRead(CPs_CircleBuffer* pCBuffer, void* pDestBuffer, const unsigned int _iBytesToRead, unsigned int* pbBytesRead)
+BOOL CircleBufferRead(CPs_CircleBuffer* pCBuffer, void* pDestBuffer, const size_t _iBytesToRead, size_t* pbBytesRead)
 {
-	unsigned int iBytesToRead = _iBytesToRead;
-	unsigned int iBytesRead = 0;
+	size_t iBytesToRead = _iBytesToRead;
+	size_t iBytesRead = 0;
 	DWORD dwWaitResult;
 	BOOL bComplete = FALSE;
 	CP_CHECKOBJECT(pCBuffer);
@@ -159,7 +159,7 @@ BOOL CircleBufferRead(CPs_CircleBuffer* pCBuffer, void* pDestBuffer, const unsig
 			unsigned int iChunkSize = pCBuffer->m_iBufferSize - pCBuffer->m_iReadCursor;
 			
 			if (iChunkSize > iBytesToRead)
-				iChunkSize = iBytesToRead;
+				iChunkSize = (unsigned int)iBytesToRead;
 				
 			// Perform the read
 			memcpy((BYTE*)pDestBuffer + iBytesRead,
@@ -180,7 +180,7 @@ BOOL CircleBufferRead(CPs_CircleBuffer* pCBuffer, void* pDestBuffer, const unsig
 			unsigned int iChunkSize = pCBuffer->m_iWriteCursor - pCBuffer->m_iReadCursor;
 			
 			if (iChunkSize > iBytesToRead)
-				iChunkSize = iBytesToRead;
+				iChunkSize = (unsigned int)iBytesToRead;
 				
 			// Perform the read
 			memcpy((BYTE*)pDestBuffer + iBytesRead,

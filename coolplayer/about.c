@@ -45,7 +45,7 @@ void SetAboutText(HWND hWnd, const UINT uiStringResource)
 //
 //
 //
-LRESULT CALLBACK about_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK about_windowproc(HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
 	{

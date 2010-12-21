@@ -377,7 +377,7 @@ void ProbeWinAmpModule(CPs_CoDecModule* pCoDec, const char* pcModulePath)
 					// Look for an extension break
 					if (*pcExtensionCursor == ';' && pcExtensionCursor != pcLastExtensionStart)
 					{
-						const int iExtensionLen = pcExtensionCursor - pcLastExtensionStart;
+						const int iExtensionLen = (int)(pcExtensionCursor - pcLastExtensionStart);
 						char* pcExtensionCopy = (char*)malloc(iExtensionLen + 1);
 						
 						memcpy(pcExtensionCopy, pcLastExtensionStart, iExtensionLen);
@@ -804,7 +804,7 @@ void CPP_OMAPLG_Seek(CPs_CoDecModule* pModule, const int iNumerator, const int i
 //
 BOOL CPP_OMAPLG_GetPCMBlock(CPs_CoDecModule* pModule, void* _pBlock, DWORD* pdwBlockSize)
 {
-	unsigned int bytes;
+	size_t bytes;
 	BOOL reply;
 	
 #ifdef _DEBUG

@@ -36,8 +36,8 @@ struct _CPs_InStream;
 
 typedef struct _CPs_InStream* CP_HINSTREAM;
 typedef void (*pfn_StreamUninitialise)(CP_HINSTREAM hStream);
-typedef BOOL (*pfn_StreamRead)(CP_HINSTREAM hStream, void* pDestBuffer, const unsigned int iBytesToRead, unsigned int* piBytesRead);
-typedef void (*pfn_StreamSeek)(CP_HINSTREAM hStream, const unsigned int iNewOffset);
+typedef BOOL (*pfn_StreamRead)(CP_HINSTREAM hStream, void* pDestBuffer, const size_t iBytesToRead, size_t* piBytesRead);
+typedef void (*pfn_StreamSeek)(CP_HINSTREAM hStream, const size_t iNewOffset);
 typedef UINT(*pfn_StreamTell)(CP_HINSTREAM hStream);
 typedef UINT(*pfn_StreamGetLength)(CP_HINSTREAM hStream);
 typedef BOOL (*pfn_StreamIsSeakable)(CP_HINSTREAM hStream);

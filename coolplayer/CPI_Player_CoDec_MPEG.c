@@ -82,7 +82,7 @@ typedef struct
 	CPs_FileInfo info;    /* stream info */
 	
 	unsigned char buffer[40000]; /* input stream buffer */
-	unsigned int buflen;   /* input stream buffer length */
+	size_t buflen;   /* input stream buffer length */
 } CPs_CoDec_MPEG;
 
 /*
@@ -161,7 +161,7 @@ int scan_header(CPs_InStream* pInStream, struct mad_header *header, struct xing 
 	
 	struct mad_frame frame;
 	unsigned char buffer[8192];
-	unsigned int buflen = 0;
+	size_t buflen = 0;
 	int count = 0, result = 0;
 	
 	mad_stream_init(&stream);
@@ -175,7 +175,7 @@ int scan_header(CPs_InStream* pInStream, struct mad_header *header, struct xing 
 		if (buflen < sizeof(buffer))
 		{
 			// DWORD bytes;
-			unsigned int bytes;
+			size_t bytes;
 			
 			if (pInStream->Read(pInStream, buffer + buflen, sizeof(buffer) - buflen, &bytes) == FALSE
 					|| bytes == 0)
@@ -187,7 +187,7 @@ int scan_header(CPs_InStream* pInStream, struct mad_header *header, struct xing 
 			buflen += bytes;
 		}
 		
-		mad_stream_buffer(&stream, buffer, buflen);
+		mad_stream_buffer(&stream, buffer, (unsigned long)buflen);
 		
 		while (1)
 		{
@@ -477,7 +477,7 @@ BOOL CPP_OMMP3_OpenFile(CPs_CoDecModule* pModule, char const *path, DWORD dwCook
 	if (context->m_pInStream->IsSeekable(context->m_pInStream) == TRUE) // only works on seekable streams
 	{
 		CIs_ID3v2Tag tag;
-		unsigned int iBytesRead;
+		size_t iBytesRead;
 		
 		memset(&tag, 0, sizeof(tag));
 		context->m_pInStream->Read(context->m_pInStream, &tag, sizeof(tag), &iBytesRead);
@@ -601,7 +601,7 @@ void CPP_OMMP3_Seek(CPs_CoDecModule* pModule, int const numer, int const denom)
 	if (context->m_pInStream->Read(context->m_pInStream, context->buffer, sizeof(context->buffer), &context->buflen) == FALSE)
 		context->buflen = 0;
 		
-	mad_stream_buffer(&context->stream, context->buffer, context->buflen);
+	mad_stream_buffer(&context->stream, context->buffer, (unsigned long)context->buflen);
 	
 	mad_frame_mute(&context->frame);
 	
@@ -685,7 +685,7 @@ BOOL CPP_OMMP3_GetPCMBlock(CPs_CoDecModule* pModule, void *block, DWORD *size)
 		while (mad_frame_decode(&context->frame, &context->stream) == -1)
 		{
 			// DWORD bytes;
-			unsigned int bytes;
+			size_t bytes;
 			
 			if (MAD_RECOVERABLE(context->stream.error))
 				continue;
@@ -707,7 +707,7 @@ BOOL CPP_OMMP3_GetPCMBlock(CPs_CoDecModule* pModule, void *block, DWORD *size)
 			
 			mad_stream_buffer(&context->stream,
 			
-							  context->buffer, context->buflen += bytes);
+							  context->buffer, (unsigned long)(context->buflen += bytes));
 		}
 		
 		bitrate = context->frame.header.bitrate / 1000;
@@ -724,7 +724,7 @@ BOOL CPP_OMMP3_GetPCMBlock(CPs_CoDecModule* pModule, void *block, DWORD *size)
 		mad_timer_add(&context->timer, context->frame.header.duration);
 	}
 	
-	*size = samples - (unsigned char *) block;
+	*size = (DWORD)(samples - (unsigned char *) block);
 	
 	return TRUE;
 }
