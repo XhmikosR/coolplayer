@@ -2304,7 +2304,7 @@ void CPLI_WriteTag_OGG(CPs_PlaylistItem* pItem, HANDLE hFile)
 		{
 			unsigned int iCRC;
 			int iByteIDX;
-			static const ogg_uint32_t crc_lookup[256]; // found in framing.c (ogg)
+			extern const ogg_uint32_t crc_lookup[256]; // found in framing.c (ogg)
 			
 			iCRC = 0;
 			
