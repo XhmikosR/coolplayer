@@ -80,68 +80,68 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuildStep Include="backends.h">
+    <ClInclude Include="smallft.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="bitrate.h">
+    </ClInclude>
+    <ClInclude Include="scales.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="codebook.h">
+    </ClInclude>
+    <ClInclude Include="registry.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="codec_internal.h">
+    </ClInclude>
+    <ClInclude Include="psy.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="envelope.h">
+    </ClInclude>
+    <ClInclude Include="os.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="highlevel.h">
+    </ClInclude>
+    <ClInclude Include="misc.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="lookup.h">
+    </ClInclude>
+    <ClInclude Include="mdct.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="lookup_data.h">
+    </ClInclude>
+    <ClInclude Include="masking.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="lpc.h">
+    </ClInclude>
+    <ClInclude Include="lsp.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="lsp.h">
+    </ClInclude>
+    <ClInclude Include="lpc.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="masking.h">
+    </ClInclude>
+    <ClInclude Include="lookup_data.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="mdct.h">
+    </ClInclude>
+    <ClInclude Include="lookup.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="misc.h">
+    </ClInclude>
+    <ClInclude Include="highlevel.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="os.h">
+    </ClInclude>
+    <ClInclude Include="envelope.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="psy.h">
+    </ClInclude>
+    <ClInclude Include="codec_internal.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="registry.h">
+    </ClInclude>
+    <ClInclude Include="codebook.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="scales.h">
+    </ClInclude>
+    <ClInclude Include="bitrate.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="smallft.h">
+    </ClInclude>
+    <ClInclude Include="window.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="window.h">
+    </ClInclude>
+    <ClInclude Include="backends.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="vorbis\codec.h">
+    </ClInclude>
+    <ClInclude Include="vorbis\vorbisfile.h">
       <Filter>Header Files\vorbis</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="vorbis\vorbisfile.h">
+    </ClInclude>
+    <ClInclude Include="vorbis\codec.h">
       <Filter>Header Files\vorbis</Filter>
-    </CustomBuildStep>
+    </ClInclude>
   </ItemGroup>
 </Project>

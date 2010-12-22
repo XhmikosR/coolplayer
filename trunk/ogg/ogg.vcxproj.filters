@@ -19,11 +19,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuildStep Include="ogg\ogg.h">
+    <ClInclude Include="ogg\ogg.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="ogg\os_types.h">
+    </ClInclude>
+    <ClInclude Include="ogg\os_types.h">
       <Filter>Header Files</Filter>
-    </CustomBuildStep>
+    </ClInclude>
   </ItemGroup>
 </Project>

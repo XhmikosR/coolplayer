@@ -50,48 +50,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuildStep Include="bit.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="config.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="decoder.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="fixed.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="frame.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="global.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="huffman.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="layer12.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="layer3.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="mad.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="stream.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="synth.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="timer.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="version.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
     <CustomBuildStep Include="data\D.dat">
       <Filter>Data Files</Filter>
     </CustomBuildStep>
@@ -107,5 +65,49 @@
     <CustomBuildStep Include="data\sf_table.dat">
       <Filter>Data Files</Filter>
     </CustomBuildStep>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="synth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="layer3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="layer12.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="huffman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fixed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="decoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
