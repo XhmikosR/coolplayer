@@ -38,7 +38,7 @@ void SetAboutText(HWND hWnd, const UINT uiStringResource)
 	HRSRC hResource;
 	HGLOBAL hResourceData;
 
-	hResource = FindResource(NULL, MAKEINTRESOURCE(uiStringResource), "RAW");
+	hResource = FindResource(NULL, MAKEINTRESOURCE(uiStringResource), "TEXT");
 	hResourceData = LoadResource(NULL, hResource);
 	SetDlgItemText(hWnd, IDC_ABOUTTEXT, (LPCTSTR)LockResource(hResourceData));
 }

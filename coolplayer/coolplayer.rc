@@ -20,6 +20,7 @@
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
@@ -32,16 +33,38 @@ IDB_MAINUP              BITMAP                  "res\\main_up.bmp"
 IDB_SYSICON             BITMAP                  "res\\SysIcon.bmp"
 IDB_SYSICON_MASK        BITMAP                  "res\\SysIcon_Mask.bmp"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
 //
+
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 APP_ICON                ICON                    "res\\coolplayer.ico"
 IDI_ICON_MP3            ICON                    "res\\mp3.ico"
 IDI_ICON_PLS            ICON                    "res\\pls.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXT
+//
+
+IDR_ABOUT1              TEXT                    "res\\about.txt"
+IDR_KEYBOARD            TEXT                    "res\\keyboard.txt"
+IDR_USAGE               TEXT                    "res\\usage.txt"
+IDR_CHANGES             TEXT                    "res\\changes.txt"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// SKIN
+//
+
+IDR_DEFAULTSKIN         SKIN                    "res\\Default.CPSkin"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -78,16 +101,6 @@ BEGIN
     END
 END
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// RAW
-//
-
-IDR_ABOUT1              RAW                     "res\\about.txt"
-IDR_KEYBOARD            RAW                     "res\\keyboard.txt"
-IDR_USAGE               RAW                     "res\\usage.txt"
-IDR_CHANGES             RAW                     "res\\changes.txt"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -225,13 +238,6 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// SKIN
-//
-
-IDR_DEFAULTSKIN         SKIN                    "res\\Default.CPSkin"
 
 /////////////////////////////////////////////////////////////////////////////
 //

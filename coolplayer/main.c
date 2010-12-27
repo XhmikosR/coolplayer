@@ -1781,7 +1781,7 @@ void    cmdline_usage(HWND hWndCoolPlayer)
 	
 	resource = FindResource(NULL, // module handle
 							MAKEINTRESOURCE(IDR_USAGE), // pointer to resource name
-							"raw"); // pointer to resource type
+							"TEXT"); // pointer to resource type
 	globaldata = LoadResource(NULL, // resource-module handle
 							  resource);
 	                          
