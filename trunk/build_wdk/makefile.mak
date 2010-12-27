@@ -43,8 +43,8 @@ DEFINES=/D "_WINDOWS" /D "NDEBUG" /D "_CRT_SECURE_NO_WARNINGS"
 CFLAGS=/nologo /c /Fo"$(OBJDIR)/" /EHsc /MD /O1 /GS /GL /MP
 LIBS=kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comdlg32.lib comctl32.lib \
 	winspool.lib ole32.lib oleaut32.lib dsound.lib wininet.lib winmm.lib
-LDFLAGS=/NOLOGO /INCREMENTAL:NO /RELEASE /OPT:REF /OPT:ICF /DYNAMICBASE /NXCOMPAT /LTCG \
-		/MERGE:.rdata=.text
+LDFLAGS=/NOLOGO /WX /INCREMENTAL:NO /RELEASE /OPT:REF /OPT:ICF /DYNAMICBASE /NXCOMPAT \
+		/LTCG /MERGE:.rdata=.text
 
 !IFDEF x64
 CFLAGS=$(CFLAGS) /D "_WIN64" /D "_WIN32_WINNT=0x0502" 
@@ -59,7 +59,7 @@ LDFLAGS=$(LDFLAGS) /SUBSYSTEM:WINDOWS,5.0 /MACHINE:X86 $(LIBS)
 !ENDIF
 
 
-CPCFLAGS=@$(CC) $(CFLAGS) /W3 $(DEFINES) /I "$(MADSRC)" /I "$(OGGSRC)" \
+CPCFLAGS=@$(CC) $(CFLAGS) /W3 /WX $(DEFINES) /I "$(MADSRC)" /I "$(OGGSRC)" \
 	/I "$(VORBISSRC)" /I ".." /Tc $<
 MADCFLAGS=@$(CC) $(CFLAGS) /W0 $(DEFINES) /D "FPM_DEFAULT" /D "ASO_ZEROCHECK" \
 	/D "HAVE_CONFIG_H" /I "$(MADSRC)\data" /Tc $<
@@ -207,106 +207,97 @@ $(APP): $(OBJECTS)
 
 # Dependencies
 
+CP_HEADERS=$(CPSRC)\globals.h $(CPSRC)\stdafx.h
+
 #CPSRC
-$(OBJDIR)\about.obj: $(CPSRC)\about.c $(CPSRC)\stdafx.h $(CPSRC)\globals.h
-$(OBJDIR)\bitmap2region.obj: $(CPSRC)\bitmap2region.c $(CPSRC)\stdafx.h $(CPSRC)\globals.h
-$(OBJDIR)\CLV_ListView.obj: $(CPSRC)\CLV_ListView.c $(CPSRC)\stdafx.h $(CPSRC)\globals.h \
-	$(CPSRC)\resource.h
-$(OBJDIR)\CompositeFile.obj: $(CPSRC)\CompositeFile.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
+$(OBJDIR)\about.obj: $(CPSRC)\about.c $(CP_HEADERS)
+$(OBJDIR)\bitmap2region.obj: $(CPSRC)\bitmap2region.c $(CP_HEADERS)
+$(OBJDIR)\CLV_ListView.obj: $(CPSRC)\CLV_ListView.c $(CP_HEADERS) $(CPSRC)\resource.h
+$(OBJDIR)\CompositeFile.obj: $(CPSRC)\CompositeFile.c $(CP_HEADERS) \
 	$(CPSRC)\CompositeFile.h $(ZLIBSRC)\zlib.h
 $(OBJDIR)\coolplayer.res: $(CPSRC)\coolplayer.rc $(CPSRC)\globals.h $(CPSRC)\resource.h
-$(OBJDIR)\CPI_CircleBuffer.obj: $(CPSRC)\CPI_CircleBuffer.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_CircleBuffer.h
-$(OBJDIR)\CPI_Equaliser_Basic.obj: $(CPSRC)\CPI_Equaliser_Basic.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Equaliser.h
+$(OBJDIR)\CPI_CircleBuffer.obj: $(CPSRC)\CPI_CircleBuffer.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_CircleBuffer.h
+$(OBJDIR)\CPI_Equaliser_Basic.obj: $(CPSRC)\CPI_Equaliser_Basic.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Equaliser.h
 $(OBJDIR)\CPI_ID3_Genres.obj: $(CPSRC)\CPI_ID3_Genres.c $(CPSRC)\CPI_ID3.h $(CPSRC)\stdafx.h
-$(OBJDIR)\CPI_Image.obj: $(CPSRC)\CPI_Image.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\CompositeFile.h
-$(OBJDIR)\CPI_Indicators.obj: $(CPSRC)\CPI_Indicators.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
+$(OBJDIR)\CPI_Image.obj: $(CPSRC)\CPI_Image.c $(CP_HEADERS) $(CPSRC)\CompositeFile.h
+$(OBJDIR)\CPI_Indicators.obj: $(CPSRC)\CPI_Indicators.c $(CP_HEADERS) \
 	$(CPSRC)\CPI_InterfacePart.h
-$(OBJDIR)\CPI_Interface.obj: $(CPSRC)\CPI_Interface.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\resource.h $(CPSRC)\WindowsOS.h $(CPSRC)\CPI_InterfacePart.h
-$(OBJDIR)\CPI_InterfacePart.obj: $(CPSRC)\CPI_InterfacePart.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_InterfacePart.h
+$(OBJDIR)\CPI_Interface.obj: $(CPSRC)\CPI_Interface.c $(CP_HEADERS) $(CPSRC)\resource.h \
+	$(CPSRC)\WindowsOS.h $(CPSRC)\CPI_InterfacePart.h
+$(OBJDIR)\CPI_InterfacePart.obj: $(CPSRC)\CPI_InterfacePart.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_InterfacePart.h
 $(OBJDIR)\CPI_InterfacePart_CommandButton.obj: $(CPSRC)\CPI_InterfacePart_CommandButton.c \
-	$(CPSRC)\globals.h $(CPSRC)\stdafx.h $(CPSRC)\CPI_InterfacePart.h
+	$(CP_HEADERS) $(CPSRC)\CPI_InterfacePart.h
 $(OBJDIR)\CPI_InterfacePart_Indicator.obj: $(CPSRC)\CPI_InterfacePart_Indicator.c \
-	$(CPSRC)\globals.h $(CPSRC)\stdafx.h $(CPSRC)\CPI_InterfacePart.h $(CPSRC)\CPI_Indicators.h
-$(OBJDIR)\CPI_Keyboard.obj: $(CPSRC)\CPI_Keyboard.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\resource.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Playlist.h \
-	$(CPSRC)\CPI_PlaylistItem.h
-$(OBJDIR)\CPI_Player.obj: $(CPSRC)\CPI_Player.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_Messages.h
-$(OBJDIR)\CPI_Player_Callbacks.obj: $(CPSRC)\CPI_Player_Callbacks.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_PlaylistItem.h
-$(OBJDIR)\CPI_Player_CoDec_MPEG.obj: $(CPSRC)\CPI_Player_CoDec_MPEG.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player_CoDec.h $(MADSRC)\mad.h $(CPSRC)\CPI_Stream.h \
-	$(CPSRC)\CPI_ID3.h
-$(OBJDIR)\CPI_Player_CoDec_OGG.obj: $(CPSRC)\CPI_Player_CoDec_OGG.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Stream.h $(CPSRC)\CPI_Player_CoDec.h $(CPSRC)\CPI_ID3.h \
-	$(OGGSRC)\ogg\ogg.h $(VORBISSRC)\vorbis\codec.h $(VORBISSRC)\vorbis\vorbisfile.h 
-$(OBJDIR)\CPI_Player_CoDec_WAV.obj: $(CPSRC)\CPI_Player_CoDec_WAV.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player_CoDec.h $(CPSRC)\CP_RIFFStructs.h \
-	$(CPSRC)\CPI_ID3.h
-$(OBJDIR)\CPI_Player_CoDec_WinAmpPlugin.obj: $(CPSRC)\CPI_Player_CoDec_WinAmpPlugin.c \
-	$(CPSRC)\globals.h $(CPSRC)\stdafx.h $(CPSRC)\CPI_Player_CoDec.h \
-	$(CPSRC)\CP_WinAmpStructs.h $(CPSRC)\CPI_CircleBuffer.h
-$(OBJDIR)\CPI_Player_Engine.obj: $(CPSRC)\CPI_Player_Engine.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player_Engine.h
-$(OBJDIR)\CPI_Player_FileAssoc.obj: $(CPSRC)\CPI_Player_FileAssoc.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player_CoDec.h
-$(OBJDIR)\CPI_Player_Output_DirectSound.obj: $(CPSRC)\CPI_Player_Output_DirectSound.c \
-	$(CPSRC)\globals.h $(CPSRC)\stdafx.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_CoDec.h \
-	$(CPSRC)\CPI_Player_Output.h $(CPSRC)\CPI_Equaliser.h
-$(OBJDIR)\CPI_Player_Output_File.obj: $(CPSRC)\CPI_Player_Output_File.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_CoDec.h \
-	$(CPSRC)\CPI_Player_Output.h $(CPSRC)\CPI_Equaliser.h $(CPSRC)\CPI_Playlist.h \
-	$(CPSRC)\CPI_PlaylistItem.h
-$(OBJDIR)\CPI_Player_Output_Wave.obj: $(CPSRC)\CPI_Player_Output_Wave.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_CoDec.h \
-	$(CPSRC)\CPI_Player_Output.h $(CPSRC)\CPI_Equaliser.h
-$(OBJDIR)\CPI_Playlist.obj: $(CPSRC)\CPI_Playlist.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\CPI_PlaylistItem_Internal.h \
-	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_Engine.h
-$(OBJDIR)\CPI_PlaylistItem.obj: $(CPSRC)\CPI_PlaylistItem.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h \
-	$(CPSRC)\CPI_PlaylistItem_Internal.h $(CPSRC)\CPI_ID3.h $(CPSRC)\CP_RIFFStructs.h \
-	$(OGGSRC)\ogg\ogg.h $(VORBISSRC)\vorbis\codec.h $(VORBISSRC)\vorbis\vorbisfile.h
-$(OBJDIR)\CPI_PlaylistWindow.obj: $(CPSRC)\CPI_PlaylistWindow.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\WindowsOS.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_ID3.h \
-	$(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\CPI_PlaylistWindow.h \
-	$(CPSRC)\CPI_Indicators.h
-$(OBJDIR)\CPI_Playlist_Callbacks.obj: $(CPSRC)\CPI_Playlist_Callbacks.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\CPI_Playlist.h
-$(OBJDIR)\CPI_Stream.obj: $(CPSRC)\CPI_Stream.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\CPI_Stream.h
-$(OBJDIR)\CPI_Stream_Internet.obj: $(CPSRC)\CPI_Stream_Internet.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Stream.h $(CPSRC)\CPI_CircleBuffer.h \
+	$(CP_HEADERS) $(CPSRC)\CPI_InterfacePart.h $(CPSRC)\CPI_Indicators.h
+$(OBJDIR)\CPI_Keyboard.obj: $(CPSRC)\CPI_Keyboard.c $(CP_HEADERS) $(CPSRC)\resource.h \
+	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h
+$(OBJDIR)\CPI_Player.obj: $(CPSRC)\CPI_Player.c $(CP_HEADERS) $(CPSRC)\CPI_Player.h \
 	$(CPSRC)\CPI_Player_Messages.h
-$(OBJDIR)\CPI_Stream_LocalFile.obj: $(CPSRC)\CPI_Stream_LocalFile.c $(CPSRC)\globals.h \
-	$(CPSRC)\stdafx.h $(CPSRC)\CPI_Stream.h
-$(OBJDIR)\CPI_Verbs.obj: $(CPSRC)\CPI_Verbs.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\resource.h $(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistWindow.h \
-	$(CPSRC)\DLG_Find.h $(CPSRC)\CPI_Player.h
-$(OBJDIR)\CPSK_Skin.obj: $(CPSRC)\CPSK_Skin.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\resource.h $(CPSRC)\CompositeFile.h
-$(OBJDIR)\DLG_Find.obj: $(CPSRC)\DLG_Find.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\DLG_Find.h $(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h
-$(OBJDIR)\main.obj: $(CPSRC)\main.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\WindowsOS.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Playlist.h \
-	$(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\DLG_Find.h $(CPSRC)\CPI_PlaylistWindow.h \
-	$(CPSRC)\RotatingIcon.h $(CPSRC)\CPI_Indicators.h
-$(OBJDIR)\options.obj: $(CPSRC)\options.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Playlist.h
-$(OBJDIR)\profile.obj: $(CPSRC)\profile.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
+$(OBJDIR)\CPI_Player_Callbacks.obj: $(CPSRC)\CPI_Player_Callbacks.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_PlaylistItem.h
+$(OBJDIR)\CPI_Player_CoDec_MPEG.obj: $(CPSRC)\CPI_Player_CoDec_MPEG.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player_CoDec.h $(MADSRC)\mad.h $(CPSRC)\CPI_Stream.h $(CPSRC)\CPI_ID3.h
+$(OBJDIR)\CPI_Player_CoDec_OGG.obj: $(CPSRC)\CPI_Player_CoDec_OGG.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Stream.h $(CPSRC)\CPI_Player_CoDec.h $(CPSRC)\CPI_ID3.h \
+	$(OGGSRC)\ogg\ogg.h $(VORBISSRC)\vorbis\codec.h $(VORBISSRC)\vorbis\vorbisfile.h 
+$(OBJDIR)\CPI_Player_CoDec_WAV.obj: $(CPSRC)\CPI_Player_CoDec_WAV.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player_CoDec.h $(CPSRC)\CP_RIFFStructs.h $(CPSRC)\CPI_ID3.h
+$(OBJDIR)\CPI_Player_CoDec_WinAmpPlugin.obj: $(CPSRC)\CPI_Player_CoDec_WinAmpPlugin.c \
+	$(CP_HEADERS) $(CPSRC)\CPI_Player_CoDec.h $(CPSRC)\CP_WinAmpStructs.h \
+	$(CPSRC)\CPI_CircleBuffer.h
+$(OBJDIR)\CPI_Player_Engine.obj: $(CPSRC)\CPI_Player_Engine.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player_Engine.h
+$(OBJDIR)\CPI_Player_FileAssoc.obj: $(CPSRC)\CPI_Player_FileAssoc.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player_CoDec.h
+$(OBJDIR)\CPI_Player_Output_DirectSound.obj: $(CPSRC)\CPI_Player_Output_DirectSound.c \
+	$(CP_HEADERS) $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_CoDec.h \
+	$(CPSRC)\CPI_Player_Output.h $(CPSRC)\CPI_Equaliser.h
+$(OBJDIR)\CPI_Player_Output_File.obj: $(CPSRC)\CPI_Player_Output_File.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_CoDec.h $(CPSRC)\CPI_Player_Output.h \
+	$(CPSRC)\CPI_Equaliser.h $(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h
+$(OBJDIR)\CPI_Player_Output_Wave.obj: $(CPSRC)\CPI_Player_Output_Wave.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Player.h $(CPSRC)\CPI_Player_CoDec.h $(CPSRC)\CPI_Player_Output.h \
+	$(CPSRC)\CPI_Equaliser.h
+$(OBJDIR)\CPI_Playlist.obj: $(CPSRC)\CPI_Playlist.c $(CP_HEADERS) $(CPSRC)\CPI_Playlist.h \
+	$(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\CPI_PlaylistItem_Internal.h $(CPSRC)\CPI_Player.h \
+	$(CPSRC)\CPI_Player_Engine.h
+$(OBJDIR)\CPI_PlaylistItem.obj: $(CPSRC)\CPI_PlaylistItem.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\CPI_PlaylistItem_Internal.h \
+	$(CPSRC)\CPI_ID3.h $(CPSRC)\CP_RIFFStructs.h $(OGGSRC)\ogg\ogg.h \
+	$(VORBISSRC)\vorbis\codec.h $(VORBISSRC)\vorbis\vorbisfile.h
+$(OBJDIR)\CPI_PlaylistWindow.obj: $(CPSRC)\CPI_PlaylistWindow.c $(CP_HEADERS) \
+	$(CPSRC)\WindowsOS.h $(CPSRC)\CPI_Player.h $(CPSRC)\CPI_ID3.h $(CPSRC)\CPI_Playlist.h \
+	$(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\CPI_PlaylistWindow.h $(CPSRC)\CPI_Indicators.h
+$(OBJDIR)\CPI_Playlist_Callbacks.obj: $(CPSRC)\CPI_Playlist_Callbacks.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\CPI_Playlist.h
+$(OBJDIR)\CPI_Stream.obj: $(CPSRC)\CPI_Stream.c $(CP_HEADERS) $(CPSRC)\CPI_Stream.h
+$(OBJDIR)\CPI_Stream_Internet.obj: $(CPSRC)\CPI_Stream_Internet.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Stream.h $(CPSRC)\CPI_CircleBuffer.h $(CPSRC)\CPI_Player_Messages.h
+$(OBJDIR)\CPI_Stream_LocalFile.obj: $(CPSRC)\CPI_Stream_LocalFile.c $(CP_HEADERS) \
+	$(CPSRC)\CPI_Stream.h
+$(OBJDIR)\CPI_Verbs.obj: $(CPSRC)\CPI_Verbs.c $(CP_HEADERS) $(CPSRC)\resource.h \
+	$(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistWindow.h $(CPSRC)\DLG_Find.h \
+	$(CPSRC)\CPI_Player.h
+$(OBJDIR)\CPSK_Skin.obj: $(CPSRC)\CPSK_Skin.c $(CP_HEADERS) $(CPSRC)\resource.h \
+	$(CPSRC)\CompositeFile.h
+$(OBJDIR)\DLG_Find.obj: $(CPSRC)\DLG_Find.c $(CP_HEADERS) $(CPSRC)\DLG_Find.h \
 	$(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h
-$(OBJDIR)\RotatingIcon.obj: $(CPSRC)\RotatingIcon.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h
-$(OBJDIR)\shwapi.obj: $(CPSRC)\shwapi.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h
-$(OBJDIR)\skin.obj: $(CPSRC)\skin.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h
+$(OBJDIR)\main.obj: $(CPSRC)\main.c $(CP_HEADERS) $(CPSRC)\WindowsOS.h $(CPSRC)\CPI_Player.h \
+	$(CPSRC)\CPI_Playlist.h $(CPSRC)\CPI_PlaylistItem.h $(CPSRC)\DLG_Find.h \
+	$(CPSRC)\CPI_PlaylistWindow.h $(CPSRC)\RotatingIcon.h $(CPSRC)\CPI_Indicators.h
+$(OBJDIR)\options.obj: $(CPSRC)\options.c $(CP_HEADERS) $(CPSRC)\CPI_Player.h \
+	$(CPSRC)\CPI_Playlist.h
+$(OBJDIR)\profile.obj: $(CPSRC)\profile.c $(CP_HEADERS) $(CPSRC)\CPI_Playlist.h \
+	$(CPSRC)\CPI_PlaylistItem.h
+$(OBJDIR)\RotatingIcon.obj: $(CPSRC)\RotatingIcon.c $(CP_HEADERS)
+$(OBJDIR)\shwapi.obj: $(CPSRC)\shwapi.c $(CP_HEADERS)
+$(OBJDIR)\skin.obj: $(CPSRC)\skin.c $(CP_HEADERS)
 $(OBJDIR)\stdafx.obj: $(CPSRC)\stdafx.c $(CPSRC)\stdafx.h
-$(OBJDIR)\String.obj: $(CPSRC)\String.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h
-$(OBJDIR)\WindowsOS.obj: $(CPSRC)\WindowsOS.c $(CPSRC)\globals.h $(CPSRC)\stdafx.h \
-	$(CPSRC)\WindowsOS.h
+$(OBJDIR)\String.obj: $(CPSRC)\String.c $(CP_HEADERS)
+$(OBJDIR)\WindowsOS.obj: $(CPSRC)\WindowsOS.c $(CP_HEADERS) $(CPSRC)\WindowsOS.h
 
 #mad
 $(OBJDIR)\bit.obj: $(MADSRC)\bit.c
