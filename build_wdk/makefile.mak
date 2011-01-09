@@ -1,6 +1,7 @@
 # *
 # * makefile.mak, makefile for building CoolPlayer with WDK
-# * Copyright (C) 2010 XhmikosR
+# *
+# * Copyright (C) 2010-2011 XhmikosR
 # *
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -82,7 +83,7 @@ CLEAN:
 	-@ RMDIR /Q "$(OBJDIR)" "$(BINDIR)" >NUL 2>&1
 
 
-OBJECTS= \
+CP_OBJ= \
 	$(OBJDIR)\about.obj \
 	$(OBJDIR)\bitmap2region.obj \
 	$(OBJDIR)\CLV_ListView.obj \
@@ -127,8 +128,9 @@ OBJECTS= \
 	$(OBJDIR)\skin.obj \
 	$(OBJDIR)\stdafx.obj \
 	$(OBJDIR)\String.obj \
-	$(OBJDIR)\WindowsOS.obj \
-\
+	$(OBJDIR)\WindowsOS.obj
+
+MAD_OBJ= \
 	$(OBJDIR)\bit.obj \
 	$(OBJDIR)\decoder.obj \
 	$(OBJDIR)\fixed.obj \
@@ -139,11 +141,13 @@ OBJECTS= \
 	$(OBJDIR)\stream.obj \
 	$(OBJDIR)\synth.obj \
 	$(OBJDIR)\timer.obj \
-	$(OBJDIR)\version.obj \
-\
+	$(OBJDIR)\version.obj
+
+OGG_OBJ= \
 	$(OBJDIR)\bitwise.obj \
-	$(OBJDIR)\framing.obj \
-\
+	$(OBJDIR)\framing.obj
+
+VORBIS_OBJ= \
 	$(OBJDIR)\analysis.obj \
 	$(OBJDIR)\bitrate.obj \
 	$(OBJDIR)\block.obj \
@@ -164,8 +168,9 @@ OBJECTS= \
 	$(OBJDIR)\smallft.obj \
 	$(OBJDIR)\synthesis.obj \
 	$(OBJDIR)\vorbisfile.obj \
-	$(OBJDIR)\window.obj \
-\
+	$(OBJDIR)\window.obj
+
+ZLIB_OBJ= \
 	$(OBJDIR)\adler32.obj \
 	$(OBJDIR)\compress.obj \
 	$(OBJDIR)\crc32.obj \
@@ -181,6 +186,9 @@ OBJECTS= \
 	$(OBJDIR)\trees.obj \
 	$(OBJDIR)\uncompr.obj \
 	$(OBJDIR)\zutil.obj
+
+
+OBJECTS=$(CP_OBJ) $(MAD_OBJ) $(OGG_OBJ) $(VORBIS_OBJ) $(ZLIB_OBJ)
 
 
 {$(CPSRC)}.c{$(OBJDIR)}.obj::
