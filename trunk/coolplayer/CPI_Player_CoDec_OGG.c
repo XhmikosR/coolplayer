@@ -100,7 +100,7 @@ void CP_InitialiseCodec_OGG(CPs_CoDecModule* pCoDec)
 	pContext->m_pInStream = NULL;
 	
 	CPFA_InitialiseFileAssociations(pCoDec);
-	CPFA_AddFileAssociation(pCoDec, "OGG", 0L);
+	CPFA_AddFileAssociation(pCoDec, "OGA", 0L);
 }
 
 //
