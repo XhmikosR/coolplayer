@@ -1,7 +1,8 @@
 @ECHO OFF
 rem *
 rem * build.cmd, Batch file "wrapper" for makefile.mak, used to build CoolPlayer with WDK
-rem * Copyright (C) 2010 XhmikosR
+rem *
+rem * Copyright (C) 2010-2011 XhmikosR
 rem *
 rem * This program is free software; you can redistribute it and/or modify
 rem * it under the terms of the GNU General Public License as published by
@@ -16,7 +17,7 @@ rem *
 rem * You should have received a copy of the GNU General Public License
 rem * along with this program; if not, write to the Free Software
 rem * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-rem *
+
 
 SETLOCAL
 CD /D %~dp0
@@ -60,48 +61,50 @@ EXIT /B
 :CHECKFIRSTARG
 rem Check for the first switch
 IF "%1" == "" (
-SET BUILDTYPE=Build
+  SET BUILDTYPE=Build
 ) ELSE (
-IF /I "%1" == "Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
-IF /I "%1" == "/Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
-IF /I "%1" == "-Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
-IF /I "%1" == "--Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
-IF /I "%1" == "Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
-IF /I "%1" == "/Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
-IF /I "%1" == "-Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
-IF /I "%1" == "--Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
-IF /I "%1" == "Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
-IF /I "%1" == "/Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
-IF /I "%1" == "-Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
-IF /I "%1" == "--Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
-ECHO.
-ECHO:Unsupported commandline switch!
-ECHO:Run "build.cmd help" for details about the commandline switches.
-CALL :SUBMSG "ERROR" "Compilation failed!"
+  IF /I "%1" == "Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "/Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "-Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "--Build" SET BUILDTYPE=Build&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "/Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "-Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "--Clean" SET BUILDTYPE=Clean&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "/Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "-Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
+  IF /I "%1" == "--Rebuild" SET BUILDTYPE=Rebuild&&GOTO :CHECKSECONDARG
+
+  ECHO.
+  ECHO:Unsupported commandline switch!
+  ECHO:Run "build.cmd help" for details about the commandline switches.
+  CALL :SUBMSG "ERROR" "Compilation failed!"
 )
 
 
 :CHECKSECONDARG
 rem Check for the second switch
 IF "%2" == "" (
-SET ARCH=all
+  SET ARCH=all
 ) ELSE (
-IF /I "%2" == "x86" SET ARCH=x86&&GOTO :START
-IF /I "%2" == "/x86" SET ARCH=x86&&GOTO :START
-IF /I "%2" == "-x86" SET ARCH=x86&&GOTO :START
-IF /I "%2" == "--x86" SET ARCH=x86&&GOTO :START
-IF /I "%2" == "x64" SET ARCH=x64&&GOTO :START
-IF /I "%2" == "/x64" SET ARCH=x64&&GOTO :START
-IF /I "%2" == "-x64" SET ARCH=x64&&GOTO :START
-IF /I "%2" == "--x64" SET ARCH=x64&&GOTO :START
-IF /I "%2" == "all" SET ARCH=all&&GOTO :START
-IF /I "%2" == "/all" SET ARCH=all&&GOTO :START
-IF /I "%2" == "-all" SET ARCH=all&&GOTO :START
-IF /I "%2" == "--all" SET ARCH=all&&GOTO :START
-ECHO.
-ECHO:Unsupported commandline switch!
-ECHO:Run "build.cmd help" for details about the commandline switches.
-CALL :SUBMSG "ERROR" "Compilation failed!"
+  IF /I "%2" == "x86" SET ARCH=x86&&GOTO :START
+  IF /I "%2" == "/x86" SET ARCH=x86&&GOTO :START
+  IF /I "%2" == "-x86" SET ARCH=x86&&GOTO :START
+  IF /I "%2" == "--x86" SET ARCH=x86&&GOTO :START
+  IF /I "%2" == "x64" SET ARCH=x64&&GOTO :START
+  IF /I "%2" == "/x64" SET ARCH=x64&&GOTO :START
+  IF /I "%2" == "-x64" SET ARCH=x64&&GOTO :START
+  IF /I "%2" == "--x64" SET ARCH=x64&&GOTO :START
+  IF /I "%2" == "all" SET ARCH=all&&GOTO :START
+  IF /I "%2" == "/all" SET ARCH=all&&GOTO :START
+  IF /I "%2" == "-all" SET ARCH=all&&GOTO :START
+  IF /I "%2" == "--all" SET ARCH=all&&GOTO :START
+
+  ECHO.
+  ECHO:Unsupported commandline switch!
+  ECHO:Run "build.cmd help" for details about the commandline switches.
+  CALL :SUBMSG "ERROR" "Compilation failed!"
 )
 
 
@@ -119,18 +122,20 @@ TITLE Building CoolPlayer x86...
 ECHO. && ECHO.
 
 IF /I "%BUILDTYPE%" == "Build" (
-CALL :SUBNMAKE
-IF /I "%ARCH%" == "x86" GOTO :END
-IF /I "%ARCH%" == "x64" GOTO :x64
-IF /I "%ARCH%" == "all" GOTO :x64
+  CALL :SUBNMAKE
+
+  IF /I "%ARCH%" == "x86" GOTO :END
+  IF /I "%ARCH%" == "x64" GOTO :x64
+  IF /I "%ARCH%" == "all" GOTO :x64
 )
 
 IF /I "%BUILDTYPE%" == "Rebuild" (
-CALL :SUBNMAKE clean
-CALL :SUBNMAKE
-IF /I "%ARCH%" == "x86" GOTO :END
-IF /I "%ARCH%" == "x64" GOTO :x64
-IF /I "%ARCH%" == "all" GOTO :x64
+  CALL :SUBNMAKE clean
+  CALL :SUBNMAKE
+
+  IF /I "%ARCH%" == "x86" GOTO :END
+  IF /I "%ARCH%" == "x64" GOTO :x64
+  IF /I "%ARCH%" == "all" GOTO :x64
 )
 
 IF /I "%BUILDTYPE%" == "Clean" CALL :SUBNMAKE clean
@@ -148,14 +153,14 @@ TITLE Building CoolPlayer x64...
 ECHO. && ECHO.
 
 IF /I "%BUILDTYPE%" == "Build" (
-CALL :SUBNMAKE "x64=1"
-GOTO :END
+  CALL :SUBNMAKE "x64=1"
+  GOTO :END
 )
 
 IF /I "%BUILDTYPE%" == "Rebuild" (
-CALL :SUBNMAKE "x64=1" clean
-CALL :SUBNMAKE "x64=1"
-GOTO :END
+  CALL :SUBNMAKE "x64=1" clean
+  CALL :SUBNMAKE "x64=1"
+  GOTO :END
 )
 
 IF /I "%BUILDTYPE%" == "Clean" CALL :SUBNMAKE "x64=1" clean
