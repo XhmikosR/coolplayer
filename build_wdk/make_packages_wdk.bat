@@ -1,7 +1,9 @@
 @ECHO OFF
 rem *
-rem * make_packages.bat, batch file for building Regshot with WDK and creating the zip packages
-rem * Copyright (C) 2010 XhmikosR
+rem * make_packages.bat, batch file for building Regshot with WDK
+rem * and creating the zip packages
+rem *
+rem * Copyright (C) 2010-2011 XhmikosR
 rem *
 rem * This program is free software; you can redistribute it and/or modify
 rem * it under the terms of the GNU General Public License as published by
@@ -16,7 +18,7 @@ rem *
 rem * You should have received a copy of the GNU General Public License
 rem * along with this program; if not, write to the Free Software
 rem * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-rem *
+
 
 SETLOCAL
 CD /D %~dp0
@@ -43,7 +45,7 @@ CALL :SUBMSG "INFO" "Creating the %2 ZIP file..."
 MD "temp_zip" >NUL 2>&1
 COPY /Y /V "..\coolplayer\res\changes.txt" "temp_zip\Changes.txt"
 COPY /Y /V "..\coolplayer\res\readme.txt" "temp_zip\Readme.txt"
-COPY /Y /V "..\%1\coolplayer.exe" "temp_zip\"
+COPY /Y /V "..\bin\WDK\%1\coolplayer.exe" "temp_zip\"
 
 PUSHD "temp_zip"
 START "" /B /WAIT "..\7za.exe" a -tzip -mx=9 "CoolPlayer_%CPVER%_%2_WDK.zip" >NUL

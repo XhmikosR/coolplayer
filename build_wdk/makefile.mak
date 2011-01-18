@@ -25,9 +25,9 @@ MT=mt
 
 
 !IFDEF x64
-BINDIR=..\Release_x64
+BINDIR=..\bin\WDK\Release_x64
 !ELSE
-BINDIR=..\Release_x86
+BINDIR=..\bin\WDK\Release_x86
 !ENDIF
 OBJDIR=$(BINDIR)\obj
 APP=$(BINDIR)\coolplayer.exe
@@ -41,22 +41,23 @@ ZLIBSRC=..\zlib
 
 
 DEFINES=/D "_WINDOWS" /D "NDEBUG" /D "_CRT_SECURE_NO_WARNINGS"
-CFLAGS=/nologo /c /Fo"$(OBJDIR)/" /EHsc /MD /O1 /GS /GL /MP
-LIBS=kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comdlg32.lib comctl32.lib \
-	winspool.lib ole32.lib oleaut32.lib dsound.lib wininet.lib winmm.lib
+CFLAGS=/nologo /c /Fo"$(OBJDIR)/" /EHsc /MD /O1 /GL /MP
 LDFLAGS=/NOLOGO /WX /INCREMENTAL:NO /RELEASE /OPT:REF /OPT:ICF /DYNAMICBASE /NXCOMPAT \
 		/LTCG /MERGE:.rdata=.text
+LIBS=kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comdlg32.lib comctl32.lib \
+	winspool.lib ole32.lib oleaut32.lib dsound.lib wininet.lib winmm.lib
+
 
 !IFDEF x64
 CFLAGS=$(CFLAGS) /D "_WIN64" /D "_WIN32_WINNT=0x0502" 
-RFLAGS=/d "_WIN64"
+LDFLAGS=$(LDFLAGS) /SUBSYSTEM:WINDOWS,5.02 /MACHINE:X64
 LIBS=$(LIBS) msvcrt_win2003.obj
-LDFLAGS=$(LDFLAGS) /SUBSYSTEM:WINDOWS,5.02 /MACHINE:X64 $(LIBS)
+RFLAGS=/d "_WIN64"
 !ELSE
 CFLAGS=$(CFLAGS) /D "WIN32" /D "_WIN32_WINNT=0x0500"
-RFLAGS=/d "WIN32"
+LDFLAGS=$(LDFLAGS) /SUBSYSTEM:WINDOWS,5.0 /MACHINE:X86
 LIBS=$(LIBS) msvcrt_win2000.obj
-LDFLAGS=$(LDFLAGS) /SUBSYSTEM:WINDOWS,5.0 /MACHINE:X86 $(LIBS)
+RFLAGS=/d "WIN32"
 !ENDIF
 
 
@@ -78,8 +79,8 @@ CHECKDIRS:
 ALL:	CHECKDIRS $(APP)
 
 CLEAN:
-	-@ DEL "$(APP)" "$(OBJDIR)\*.idb" "$(OBJDIR)\*.obj" "$(BINDIR)\*.pdb" \
-	"$(OBJDIR)\*.res" >NUL 2>&1
+	-@ DEL "$(APP)" "$(OBJDIR)\coolplayer.idb" "$(OBJDIR)\*.obj" "$(BINDIR)\coolplayer.pdb" \
+	"$(OBJDIR)\coolplayer.res" >NUL 2>&1
 	-@ RMDIR /Q "$(OBJDIR)" "$(BINDIR)" >NUL 2>&1
 
 
@@ -209,7 +210,7 @@ OBJECTS=$(CP_OBJ) $(MAD_OBJ) $(OGG_OBJ) $(VORBIS_OBJ) $(ZLIB_OBJ)
 
 $(APP): $(OBJECTS)
 	@$(RC) $(RFLAGS) /fo"$(OBJDIR)\coolplayer.res" "$(CPSRC)\coolplayer.rc"
-	@$(LD) $(LDFLAGS) /OUT:"$(APP)" $(OBJECTS)
+	@$(LD) $(LDFLAGS) $(LIBS) $(OBJECTS) /OUT:"$(APP)"
 	@$(MT) -nologo -manifest "$(CPSRC)\res\coolplayer.exe.manifest" -outputresource:"$(APP);#1"
 
 
