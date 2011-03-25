@@ -2,6 +2,7 @@
 // Microsoft Developer Studio generated include file.
 // Used by coolplayer.rc
 //
+#define IDR_RT_MANIFEST                 1
 #define IDB_MAINUP                      101
 #define IDD_PLAYLIST                    108
 #define APP_ICON                        110

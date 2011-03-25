@@ -42,7 +42,7 @@ ZLIB_DIR     = ..\zlib
 DEFINES      = /D "_WINDOWS" /D "NDEBUG" /D "_CRT_SECURE_NO_WARNINGS"
 CFLAGS       = /nologo /c /Fo"$(OBJDIR)/" /EHsc /MD /O1 /GL /MP
 LDFLAGS      = /NOLOGO /WX /INCREMENTAL:NO /RELEASE /OPT:REF /OPT:ICF /LTCG /MERGE:.rdata=.text \
-               /DYNAMICBASE /NXCOMPAT
+               /DYNAMICBASE /NXCOMPAT /DEBUG
 LIBS         = kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comdlg32.lib \
                comctl32.lib winspool.lib ole32.lib oleaut32.lib dsound.lib wininet.lib \
                winmm.lib
@@ -82,8 +82,8 @@ CHECKDIRS:
 
 CLEAN:
 	ECHO Cleaning... & ECHO.
-	-DEL "$(EXE)" "$(OBJDIR)\coolplayer.idb" "$(OBJDIR)\*.obj" \
-	"$(BINDIR)\coolplayer.pdb" "$(OBJDIR)\coolplayer.res" >NUL 2>&1
+	-DEL "$(EXE)" "$(OBJDIR)\*.obj" "$(OBJDIR)\coolplayer.res" \
+	"$(BINDIR)\coolplayer.pdb" >NUL 2>&1
 	-RMDIR /Q "$(OBJDIR)" "$(BINDIR)" >NUL 2>&1
 
 REBUILD:	CLEAN BUILD
@@ -224,7 +224,6 @@ OBJECTS = $(CP_OBJ) $(MAD_OBJ) $(OGG_OBJ) $(VORBIS_OBJ) $(ZLIB_OBJ)
 $(EXE): $(OBJECTS)
 	rc $(RFLAGS) /fo"$(OBJDIR)\coolplayer.res" "$(CP_DIR)\coolplayer.rc" >NUL
 	link $(LDFLAGS) $(LIBS) $(OBJECTS) /OUT:"$(EXE)"
-	mt $(MTFLAGS) -manifest "$(CP_DIR)\res\coolplayer.exe.manifest" -outputresource:"$(EXE);#1"
 
 
 ####################
