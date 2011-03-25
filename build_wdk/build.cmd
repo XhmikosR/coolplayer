@@ -23,13 +23,11 @@ rem * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 SETLOCAL
 CD /D %~dp0
 
-rem Set the WDK and SDK directories
+rem Set the WDK directory
 SET "WDKBASEDIR=C:\WinDDK\7600.16385.1"
-SET "SDKDIR=%PROGRAMFILES%\Microsoft SDKs\Windows\v7.1"
 
 rem Check the building environment
 IF NOT EXIST "%WDKBASEDIR%" CALL :SUBMSG "ERROR" "Specify your WDK directory!"
-IF NOT EXIST "%SDKDIR%" CALL :SUBMSG "ERROR" "Specify your SDK directory!"
 
 rem check for the help switches
 IF /I "%1"=="help"   GOTO SHOWHELP
@@ -48,7 +46,7 @@ ECHO.
 ECHO Note:   You can also prefix the commands with "-", "--" or "/".
 ECHO.
 ECHO.
-ECHO Edit "%~nx0" and set your WDK and SDK directories.
+ECHO Edit "%~nx0" and set your WDK directory.
 ECHO You shouldn't need to make any changes other than that.
 ECHO.
 ECHO.
@@ -114,7 +112,7 @@ IF "%~2" == "" (
 :x86
 SET "INCLUDE=%WDKBASEDIR%\inc\crt;%WDKBASEDIR%\inc\api;%WDKBASEDIR%\inc\api\crt\stl60;%WDKBASEDIR%\inc\ddk"
 SET "LIB=%WDKBASEDIR%\lib\crt\i386;%WDKBASEDIR%\lib\win7\i386"
-SET "PATH=%WDKBASEDIR%\bin\x86;%WDKBASEDIR%\bin\x86\x86;%SDKDIR%\Bin"
+SET "PATH=%WDKBASEDIR%\bin\x86;%WDKBASEDIR%\bin\x86\x86"
 
 IF /I "%ARCH%" == "x64" GOTO x64
 
@@ -145,7 +143,7 @@ IF /I "%ARCH%" == "all" GOTO x64
 
 :x64
 SET "LIB=%WDKBASEDIR%\lib\crt\amd64;%WDKBASEDIR%\lib\win7\amd64"
-SET "PATH=%WDKBASEDIR%\bin\x86;%WDKBASEDIR%\bin\x86\amd64;%SDKDIR%\Bin"
+SET "PATH=%WDKBASEDIR%\bin\x86;%WDKBASEDIR%\bin\x86\amd64"
 
 IF /I "%ARCH%" == "x86" GOTO END
 
