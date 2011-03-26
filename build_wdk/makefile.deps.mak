@@ -46,7 +46,23 @@ $(OBJDIR)\CompositeFile.obj: \
 $(OBJDIR)\coolplayer.res: \
     $(CP_DIR)\coolplayer.rc \
     $(CP_DIR)\globals.h \
-    $(CP_DIR)\resource.h
+    $(CP_DIR)\resource.h \
+    $(CP_DIR)\res\about.txt \
+    $(CP_DIR)\res\changes.txt \
+    $(CP_DIR)\res\coolplayer.exe.manifest \
+    $(CP_DIR)\res\coolplayer.ico \
+    $(CP_DIR)\res\Default.CPSkin \
+    $(CP_DIR)\res\keyboard.txt \
+    $(CP_DIR)\res\main_bigfont.bmp \
+    $(CP_DIR)\res\main_down.bmp \
+    $(CP_DIR)\res\main_smallfont.bmp \
+    $(CP_DIR)\res\main_up.bmp \
+    $(CP_DIR)\res\mp3.ico \
+    $(CP_DIR)\res\pls.ico \
+    $(CP_DIR)\res\readme.txt \
+    $(CP_DIR)\res\SysIcon.bmp \
+    $(CP_DIR)\res\SysIcon_Mask.bmp \
+    $(CP_DIR)\res\usage.txt
 
 $(OBJDIR)\CPI_CircleBuffer.obj: \
     $(CP_DIR)\CPI_CircleBuffer.c \
