@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef _DEBUG
+#if defined _DEBUG && !defined (_WIN64)
 
 #ifndef _MSC_VER
 

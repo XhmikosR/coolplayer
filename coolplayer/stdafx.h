@@ -1,7 +1,7 @@
-#define _WIN32_WINDOWS 0x0410
+//#define _WIN32_WINDOWS 0x0410
 #define WIN32_LEAN_AND_MEAN
 
-#define _WIN32_IE 0x600
+//#define _WIN32_IE 0x600
 
 #include <windows.h>
 #include <stdio.h>
