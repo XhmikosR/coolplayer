@@ -1,4 +1,4 @@
-- CoolPlayer - 
+- CoolPlayer -
 ___________________________________________________
 
 Credits:
@@ -17,7 +17,7 @@ Marcus Platts <plattsm@dreamrender.com>
  - Cooler Wave Mapper
 
 Rob Leslie <rob@mars.org>
- 
+
  - MAD MPEG audio decoder
 
 Joel Klinghed <the_jk@yahoo.com>
@@ -25,7 +25,7 @@ Joel Klinghed <the_jk@yahoo.com>
  - Ogg Vorbis input module
 
 Dmitry Vassiliev <slydiman@mailru.com>
- 
+
  - 8 band equalizer
 
 Andrew Paterson <ajpaterson@ecologyfund.net>
@@ -36,12 +36,12 @@ Erukian & Infinil
 
  - Website design
 
-Rutger-Jan Hoogerdijk <rutger@cistron.nl>  
- 
+Rutger-Jan Hoogerdijk <rutger@cistron.nl>
+
  - Default skin design
 
 Eric "Rix" Allard
- 
+
  - Some changes
 
 Richard Hopkins	<tinyapps.co.uk>
@@ -59,7 +59,7 @@ ___________________________________________________
 
 Legal stuff:
 
-CoolPlayer is released under the 
+CoolPlayer is released under the
 GNU General Public License (GPL).
 ___________________________________________________
 
