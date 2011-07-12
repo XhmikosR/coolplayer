@@ -1,8 +1,8 @@
 Usage: CoolPlayer [options] [file...]
 
-Where options can be with - or /, '-'means 'off' and '+' means 'on'. 
-The commandline options override the configuration file. 
-All non options are considered to be mpeg audio files, 
+Where options can be with - or /, '-'means 'off' and '+' means 'on'.
+The commandline options override the configuration file.
+All non options are considered to be mpeg audio files,
 you can mix options and files:
 
 -?,-h,-help		Show this help.
