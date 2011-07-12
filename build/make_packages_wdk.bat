@@ -25,7 +25,7 @@ CD /D %~dp0
 
 SET CPVER=1.1.0.220
 
-CALL "build.cmd"
+CALL "build_wdk.bat"
 
 CALL :SubZipFiles Release_x86 x86
 CALL :SubZipFiles Release_x64 x64
@@ -43,10 +43,10 @@ EXIT /B
 TITLE Creating the %2 ZIP file...
 CALL :SUBMSG "INFO" "Creating the %2 ZIP file..."
 
-MD "temp_zip" >NUL 2>&1
+IF NOT EXIST "temp_zip" MD "temp_zip"
 COPY /Y /V "..\coolplayer\res\changes.txt" "temp_zip\Changes.txt"
-COPY /Y /V "..\coolplayer\res\readme.txt" "temp_zip\Readme.txt"
-COPY /Y /V "..\bin\WDK\%1\coolplayer.exe" "temp_zip\"
+COPY /Y /V "..\coolplayer\res\readme.txt"  "temp_zip\Readme.txt"
+COPY /Y /V "..\bin\WDK\%1\coolplayer.exe"  "temp_zip\"
 
 PUSHD "temp_zip"
 START "" /B /WAIT "..\7za.exe" a -tzip -mx=9 "CoolPlayer_%CPVER%_%2_WDK.zip" >NUL
@@ -54,9 +54,9 @@ IF %ERRORLEVEL% NEQ 0 CALL :SUBMSG "ERROR" "Compilation failed!"
 
 CALL :SUBMSG "INFO" "CoolPlayer_%CPVER%_%2_WDK.zip created successfully!"
 
-MOVE /Y "CoolPlayer_%CPVER%_%2_WDK.zip" "..\" >NUL 2>&1
+MOVE /Y "CoolPlayer_%CPVER%_%2_WDK.zip" "..\" >NUL
 POPD
-RD /S /Q "temp_zip" >NUL 2>&1
+IF EXIST "temp_zip" RD /S /Q "temp_zip"
 EXIT /B
 
 
