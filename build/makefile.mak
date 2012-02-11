@@ -52,7 +52,7 @@ ZLIB_DIR     = ..\zlib
 
 
 DEFINES      = /D "_WINDOWS" /D "NDEBUG" /D "_CRT_SECURE_NO_WARNINGS"
-CFLAGS       = /nologo /c /EHsc /MD /O1 /GL /MP $(DEFINES)
+CFLAGS       = /nologo /c /EHsc /MD /O2 /GL /MP $(DEFINES)
 LDFLAGS      = /NOLOGO /WX /INCREMENTAL:NO /RELEASE /OPT:REF /OPT:ICF /MERGE:.rdata=.text \
                /LTCG /DYNAMICBASE /NXCOMPAT /DEBUG
 LIBS         = kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comdlg32.lib \
