@@ -1,7 +1,7 @@
 # *
 # * makefile.mak, makefile for building CoolPlayer with WDK
 # *
-# * Copyright (C) 2010-2011 XhmikosR
+# * Copyright (C) 2010-2012 XhmikosR
 # *
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
