@@ -66,6 +66,7 @@ LDFLAGS      = $(LDFLAGS) /SUBSYSTEM:WINDOWS,5.02 /MACHINE:X64
 LIBS         = $(LIBS) msvcrt_win2003.obj
 RFLAGS       = /d "_WIN64"
 !ELSE
+CFLAGS       = $(CFLAGS) /Oy
 DEFINES      = $(DEFINES) /D "WIN32" /D "_WIN32_WINNT=0x0500"
 LDFLAGS      = $(LDFLAGS) /SUBSYSTEM:WINDOWS,5.0 /MACHINE:X86
 LIBS         = $(LIBS) msvcrt_win2000.obj
