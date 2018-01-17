@@ -287,6 +287,13 @@ void CLV_CleanupWindowData(CIs_ListViewData* pListData)
 			if (pListData->m_pColumns[iColumnIDX].m_pColumnText)
 				free(pListData->m_pColumns[iColumnIDX].m_pColumnText);
 		}
+		
+		free(pListData->m_pColumns);
+	}
+
+	if(pListData->m_piColumnOrder)
+	{
+		free(pListData->m_piColumnOrder);
 	}
 	
 	free(pListData);
