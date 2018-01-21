@@ -84,6 +84,7 @@ void CPSK_DestroySkin(CPs_Skin* pSkin)
 	CPIG_DestroyImage_WithState(pSkin->mpl_pVScrollBar_Up);
 	CPIG_DestroyImage_WithState(pSkin->mpl_pVScrollBar_Down);
 	CPIG_DestroyImage(pSkin->mpl_pSelection);
+	CPIG_DestroyImage(pSkin->mpl_pFocus);
 	
 	// Remove the command targets
 	{
